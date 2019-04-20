@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>Tips under Ubuntu 18.04</head>
+<head>Tips under Linux likeUbuntu 18.04</head>
 <body>
 <p>Probably works in general. But, tested with Ubuntu 18.04</p>
-<h1>gits</h1>
+
 <p>
-    Basics. Not to be professional on this. 
+    <ul>
+        <li><a href="#citrix_reciever">Citrix receiver</a></li>
+        <li><a href="#gits">gits</a></li>
+        <li><a href="#korean">Korean</a></li>
+    </ul>
+</p>
+
+
+<h1 id="citrix_reciever">Citrix receiver</h1>
+<p>
+    <ul>
+        <li>installation: downlaod from here <a href="https://www.citrix.co.uk/downloads/workspace-app/linux/workspace-app-for-linux-latest.html">here</a></li>
+        <li>certificates:</li>
+        <ul>
+            <li><code>sudo ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts/</code></li>
+            <li><code>sudo c_rehash /opt/Citrix/ICAClient/keystore/cacerts/</code></li>
+        
+        </ul>
+    </ul>
+</p>
+
+<h1 id="gits">gits</h1>
+<p>
+    Basics. Not to be exhaustive on this. 
     <ul>
         <li>clone: e.g. to clone this site.. <br>
             <code>git clone https://github.com/anylox/anylox.github.io</code></li>
@@ -21,7 +44,7 @@
     </ul>
 </p>
 
-<h1>Korean</h1>
+<h1 id="korean">Korean</h1>
 <p>
     <ul>
         <li>Subtitle: to fix broken smi files</li>
