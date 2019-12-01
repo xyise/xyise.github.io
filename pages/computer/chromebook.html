@@ -4,6 +4,30 @@
 <body>
 <p>Probably works in general. Tested with Asus C302ca</p>
 
+<h1>GalliumOS</h1>
+<p>
+    <ul>
+        <li>install</li>
+        <ul>
+            <li>direction: <a href="https://wiki.galliumos.org/Installing">here</a></li> 
+            <li>fix audio: 
+                <code>
+                    rm /lib/firmware/9d70-CORE-COREBOOT-0-tplg.bin
+                </code>
+                <code>
+                    ln -s dfw_sst.bin.sklnau8825max 9d70-CORE-COREBOOT-0-tplg.bin
+                </code>
+            <li>Korean support: 
+            <ul>
+                <li>Start -> Language Support: add Korean fonts. After a while, it hangs. But, it is ok. Wait about 2 - 3 mins and restart. Seems like working.</li>
+                <li>Left bottom -> Keyboard -> right click -> Input Method Configuration -> unclick 'Only Show Current Langauge' -> type 'Hangul' -> Log out and long in -> Left bottom -> Keyboard -> Input Method -> Select Hangul
+            </ul>add Korean via Langauge Support</li>
+            <li>Touchpad: reverse it</li>
+            <li>Keyboard: Layout -> Chromebook (most models)|Search overlay</li>
+
+        </ul>
+    </ul>
+</p>
 
 <h1>crouton</h1>
 <p>
