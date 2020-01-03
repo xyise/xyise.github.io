@@ -1,5 +1,11 @@
 vscode_anylox_ws.code-workspace
-.vscode/launch.json
-.vscode/settings.json
 .ipynb_checkpoints
 __pycache__
+s0.pkl
+s1.pkl
+s2.pkl
+s3.pkl
+s4.pkl
+.idea
+*.spec
+.vscode
