@@ -9,3 +9,8 @@ s4.pkl
 .idea
 *.spec
 .vscode
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
