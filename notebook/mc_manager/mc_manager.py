@@ -3,29 +3,40 @@ from numpy.random import Generator, PCG64, SeedSequence
 
 
 class MonteCarloManager:
+    """This class is to manage consistent random number generations. Only PCG64 is supported.
+    """
     
 
     def __init__(self, base_bit_gen: PCG64, scen_block_size, rn_locs: {}, rn_size = 100):
         
         self.base_bit_gen = base_bit_gen
-        self.base_state = self.base_bit_gen.state
+        self.base_state = self.base_bit_gen.state.copy()
 
         self.scen_block_size = scen_block_size
         self.rn_locs = rn_locs
         self.rn_size = rn_size
         self.rn_generators = {rn:None for rn in rn_locs}
+        
+        self.rn_states = {rn:None for rn in rn_locs}
+        self.rn_adv_sizes = {rn:None for rn in rn_locs}
+
+        # initialise states
+        self._set_states()
 
     def get_rng(self, rn):
-        
+        """Get the rng for the random variable rn. The same rng is returned as long as the rn string is the same. 
+
+        Args:
+            rn (string): name of the random number generator. It will always return the same random number generator based on the location specified 'rn_locs' passed to the constructor
+
+        Returns:
+            random number generator: rng
+        """
         rng = self.rn_generators[rn]
         if rng is None:
 
-            self.base_bit_gen.state = self.base_state
-            self.base_bit_gen.advance(self._get_advance_size(self.rn_locs[rn]))
             bit_gen = PCG64()
-            bit_gen.state = self.base_bit_gen.state
-            
-                        
+            bit_gen.state = self.rn_states[rn]                        
             self.rn_generators[rn] = Generator(bit_gen)
             rng = self.rn_generators[rn]
 
@@ -34,10 +45,30 @@ class MonteCarloManager:
     def _get_advance_size(self, loc):
         return self.rn_size * self.scen_block_size * loc
 
+    def _set_states(self):
+        """Pre-set the states (which are used when get_rng is called) and the actual advance sizes (for information only). 
+        """
+
+        prev_loc = 0
+        prev_adv_size = 0
+        # sort by locations
+        rn_locs_sorted_by_loc = dict(sorted(self.rn_locs.items(), key=lambda item: item[1]))
+        self.base_bit_gen.state = self.base_state
+        for rn, loc in rn_locs_sorted_by_loc.items():
+            adv_size_inc = self._get_advance_size(loc - prev_loc)
+            self.base_bit_gen.advance(adv_size_inc)
+            self.rn_states[rn] = self.base_bit_gen.state.copy()
+            adv_size = prev_adv_size + adv_size_inc
+            self.rn_adv_sizes[rn] = adv_size
+            prev_loc = loc
+            prev_adv_size = adv_size
+
+        self.base_bit_gen.state = self.base_state
+
+
 
 if __name__ == '__main__':
 
-    scen_block_size = 10000
     num_rns = 1000
     num_scens = 10000
     num_scens_for = 100
