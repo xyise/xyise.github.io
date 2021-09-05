@@ -5,6 +5,8 @@ tags:
 - python
 - numba
 - numpy
+- markov_chain
+- monte_carlo
 ---
 
 Source Codes: 
@@ -13,7 +15,7 @@ Source Codes:
 
 # Background
 
-Personally, numpy is the most important package because of its vectorisation implementation. Generally speaking, it makes the code shorter, easier to read, and most importantly faster, in fact, much faster if compared to nativa Python. But, the catch is *generally*. Certain algorithms or procedures are not natually vectorisable and the resulting vectorised codes can have *awakward* structures that are difficult to read. They may also introduce uncessary but unavoidable overheads. This problem can be solved using [numba](http://numba.pydata.org/), which compiles python codes *behind-the-scene* into fast machine codes. 
+Personally, numpy is the most important package because of its vectorisation implementation. Generally speaking, it makes the code shorter, easier to read, and most importantly faster, in fact, much faster if compared to nativa Python. But, the catch is *generally*. Certain algorithms or procedures are not natually vectorisable and the resulting vectorised codes can have *awkward* structures that are difficult to read. They may also introduce uncessary but unavoidable overheads. This problem can be solved using [numba](http://numba.pydata.org/), which compiles python codes *behind-the-scene* into fast machine codes. 
 
 # Illustration: Using Markov Chain Monte Carlo Simulation
 
@@ -86,6 +88,9 @@ Observe that the native Python code, which is *numba'ed*, is as simple as the nu
 
 ## Simulations
 
+{% asset_img sample_paths.png %} 
+
+
 First, the number of states should be specified together with the transition probabilities among them. The cumulative probabilities are required as inputs to the simulation
 
 {% codeblock lang:python %}
@@ -104,29 +109,35 @@ Then, we simulate the model over several steps for a large number of scenarios.
 
 {% codeblock lang:python %}
 num_step = 10
+seed = 1234
+
 num_draw = 1000000
 
 # initialise
 v_init_state = np.random.randint(0, num_state, num_draw)
-v_draw = np.random.uniform(0.0, 1.0, num_draw)
 
 # simulation: naive
-t0 = time.time()
+rng = np.random.default_rng(seed)
+td = 0.0
 v_next_naive = v_init_state.copy()
 for n in range(num_step):
+    v_draw = rng.uniform(0.0, 1.0, num_draw)
+    t0 = time.time()
     v_next_naive = markov_chain_simulation_naive(v_next_naive, v_draw, mtx_CPT0)
-print('naive: ' + str(time.time() - t0) + ' seconds')
+    td += time.time() - t0
+print('naive: ' + str(td) + ' seconds')
 
 # ..... omitted for numba and numpy simulations ......
 {% endcodeblock %}
 
 ## Results
 
-* When 1M scenarios over 10 steps are used: The numba verison is 
-    * over 50 time faster than the naive version
-    * over 3 time faster than the **numpy** version
+* When 1M scenarios over 10 steps are used: The numba verison (0.12 seconds) is 
+    * over 50 time faster than the naive version (6.7 seconds)
+    * over 3 time faster than the **numpy** version (0.43 seconds)
 
-* When 10M scenarios are used, the numba version is again over 3 times fater than the numpy version.
+* When 10M scenarios are used, the numba version (1.39 seconds) is again over 3 times fater than the numpy version (4.98 seconds).
+
 
 # In Closing
 
