@@ -2,6 +2,9 @@
 title: Debug Jupyter Python Notebook via VS Code
 date: 2021-09-04 15:59:27
 tags:
+- python
+- vscode
+- jupyter
 ---
 
 
