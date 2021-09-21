@@ -88,7 +88,7 @@ Observe that the native Python code, which is *numba'ed*, is as simple as the nu
 
 ## Simulations
 
-{% asset_img sample_paths.png %} 
+{% asset_img sample-paths.png %} 
 
 
 First, the number of states should be specified together with the transition probabilities among them. The cumulative probabilities are required as inputs to the simulation
