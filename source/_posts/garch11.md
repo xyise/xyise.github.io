@@ -2,6 +2,7 @@
 title: Illustration of Volatility Clustering using Garch
 date: 2021-09-18 19:23:09
 tags:
+- time series
 mathjax: true
 ---
 

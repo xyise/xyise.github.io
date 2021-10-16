@@ -7,6 +7,7 @@ tags:
 - jupyter
 ---
 
+VS Code finally supports debugging for Jupyter Notebook. See ['October 2021 Release'](https://devblogs.microsoft.com/python/python-in-visual-studio-code-october-2021-release/). So the following is obsolete!
 
 
 # Background
