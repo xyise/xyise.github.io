@@ -2,14 +2,17 @@
 title: Navier Stokes 2D Simulation
 date: 2021-10-16 17:25:56
 tags:
-- reivew
-- pytho
+- review
+- python
 mathjax: true
 ---
 
-{% asset_img front.png %}
+<!-- 
+{% asset_img front.png %} -->
+
 
 This post is about simulating the 2D incompressible Navier Stokes equations in a rectangular domain with the period boundary conditions in both axes. This was a topic I studied in my graduate school days when I used C/C++ and Fortran to implement the core model and Matlab for plotting purposes. The purpose of this post is just for me to remind of those equations and techniques back for no particular reason. 
+
 
 # Equations
 
@@ -74,9 +77,28 @@ C < C_{\max} \approx 2.8.
 $$
 Note that the diffusion term is not considered in specifying $C$ as it is analytically integrated in (\ref{E:ns2d-omeag-k-int}).
 
-## Discrete Fourier Transform and Dealiasing
+## Discrete Fourier Transform
 
-[FFTW](http://www.fftw.org/), a widely popular FFT library, is used to compute any discrete Fourier transformations. See also my own post {% post_link fftw fftw %}. 
+A python wrapper [pyfftw](https://pypi.org/project/pyFFTW/) to a very popular FFT liborary [FFTW](http://www.fftw.org/) is used to compute any discrete Fourier transformations. See also my own post {% post_link fftw fftw %}. For a 1D array, for example, the wrapper provides (i) the forward "physical to Fourier" tranfrom
+\begin{equation}
+Y_k = \sum_{j=0}^{n-1} X_j e^{-2\pi i k j  / n},
+\end{equation}
+and (ii) the backward "Fourier to phyiscal" transform
+\begin{equation}
+X_j = \frac{1}{n}\sum_{k=0}^{n-1} Y_k e^{2\pi i k j / n}.
+\end{equation}
+
+### Fourier decomposition
+
+For a function $u(x)$ periodic in $[0, L]$, its Fourier decomposition is written as
+\begin{equation}
+u(x)  =  \frac{1}{n} \sum_{k=0}^{n-1} \hat u_k e^{i \left( 2\pi k / L \right) x } 
+      =  \frac{1}{n} \sum_{k=-n/2+1}^{n/2} \hat u_k e^{i \left( 2\pi k / L \right) x },
+\end{equation}
+where the $k$-th wave-length is $2\pi k /L$. 
+
+
+## Calculation of Jacobian and Dealiasing
 
 
 To calculate the Fourier transform of the products appearing in the Jacobian term, we use the standard procedure: 
@@ -87,6 +109,28 @@ To calculate the Fourier transform of the products appearing in the Jacobian ter
 1. extract the 2/3 (in each axis) of the result to align to the original resolution. 
 
 An (bad) alternative would be to apply an convolution, which is a slow $N^2$ operation, while the above procedure is about $N \ln(N)$. 
+
+## Diagnostics
+
+### Energy
+
+The kinetic energy $E$ is given by
+\begin{equation}
+E = \frac{1}{2} \int_{0}^{L_x} \int_{0}^{L_y} u^2 + v^2 dx dy,
+\end{equation}
+where $L_x$ and $L_y$ are the domain lengths for $x$ and $y$, respectively. 
+It can be expressed in terms of Fourier modes as
+\begin{equation}
+E = \frac{L_x L_y}{2 M_x^2 M_y^2} \sum_{\vec{k}} \left|\hat u_{\vec{k}}\right|^2 + \left|\hat v_{\vec{k}}\right|^2, 
+\end{equation}
+where $M_x$ and $M_y$ are the number of sampling points in $x$ and $y$, respectively. 
+In terms of $\hat \psi$, we have
+\begin{equation}
+E = \frac{L_x L_y}{2 M_x^2 M_y^2} \sum_{\vec{k}} \left|\vec{k}\right|^2 \left|\hat \psi_{\vec{k}}\right|^2.
+\end{equation}
+
+
+<!--
 
 # Examples
 
@@ -104,3 +148,4 @@ An (bad) alternative would be to apply an convolution, which is a slow $N^2$ ope
 | :--: | :--: | :--: |
 |{% asset_img t_1000.png %}|{% asset_img t_1500.png %}|{% asset_img t_1980.png %}|
 
+-->
