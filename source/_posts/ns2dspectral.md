@@ -7,9 +7,9 @@ tags:
 mathjax: true
 ---
 
-<!-- 
-{% asset_img front.png %} -->
-
+|[Kelvin Helmholtz](https://en.wikipedia.org/wiki/Kelvin%E2%80%93Helmholtz_instability)    | 2D [Turbulence](https://en.wikipedia.org/wiki/Turbulence)    |
+| -- | -- |
+|{% asset_img KH.png %}|{% asset_img Turb2D.png %}|
 
 This post is about simulating the 2D incompressible Navier Stokes equations in a rectangular domain with the period boundary conditions in both axes. This was a topic I studied in my graduate school days when I used C/C++ and Fortran to implement the core model and Matlab for plotting purposes. The purpose of this post is just for me to remind of those equations and techniques back for no particular reason. 
 
@@ -129,23 +129,3 @@ In terms of $\hat \psi$, we have
 E = \frac{L_x L_y}{2 M_x^2 M_y^2} \sum_{\vec{k}} \left|\vec{k}\right|^2 \left|\hat \psi_{\vec{k}}\right|^2.
 \end{equation}
 
-
-<!--
-
-# Examples
-
-## Kelvin Helmholtz Instability
-
-[wiki](https://en.wikipedia.org/wiki/Kelvin%E2%80%93Helmholtz_instability)
-
-|      |      |      |      |
-| :--: | :--: | :--: | :--: |
-|{% asset_img 1000.png %}|{% asset_img 1200.png %}|{% asset_img 1400.png %}|{% asset_img 1600.png %}|
-
-## Turbulence
-
-|      |      |      |
-| :--: | :--: | :--: |
-|{% asset_img t_1000.png %}|{% asset_img t_1500.png %}|{% asset_img t_1980.png %}|
-
--->
