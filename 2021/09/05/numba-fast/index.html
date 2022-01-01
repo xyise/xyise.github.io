@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="XYZ">
+    
+    <title>
+        
+            Numba is fast and can be faster than Numpy |
+        
+        xYiSe
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/xyise.png">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"xyise.github.io","root":"/","language":"","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/xyise.png","favicon":"/images/xyise.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/main_bar.png"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/xyise.png">
+                </a>
+            
+            <a class="logo-title" href="/">
+                xYiSe
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/mygist"
+                            >
+                                MY GISTS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/mygist">MY GISTS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Numba is fast and can be faster than Numpy</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/xyise.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">XYZ</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2021-09-05 21:53:50</span>
+        <span class="mobile">2021-09-05 21:53</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/python/">python</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/numba/">numba</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/numpy/">numpy</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/markov-chain/">markov_chain</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/monte-carlo/">monte_carlo</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>Source Codes: </p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/xyise/xyise/blob/main/notebook/numba/numba_numpy.ipynb" >Jupyter notebook<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/xyise/xyise/tree/main/notebook/numba" >folder<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>Personally, numpy is the most important package because of its vectorisation implementation. Generally speaking, it makes the code shorter, easier to read, and most importantly faster, in fact, much faster if compared to nativa Python. But, the catch is <em>generally</em>. Certain algorithms or procedures are not natually vectorisable and the resulting vectorised codes can have <em>awkward</em> structures that are difficult to read. They may also introduce uncessary but unavoidable overheads. This problem can be solved using <a class="link"   target="_blank" rel="noopener" href="http://numba.pydata.org/" >numba<i class="fas fa-external-link-alt"></i></a>, which compiles python codes <em>behind-the-scene</em> into fast machine codes. </p>
+<h1 id="Illustration-Using-Markov-Chain-Monte-Carlo-Simulation"><a href="#Illustration-Using-Markov-Chain-Monte-Carlo-Simulation" class="headerlink" title="Illustration: Using Markov Chain Monte Carlo Simulation"></a>Illustration: Using Markov Chain Monte Carlo Simulation</h1><p>Recently, I had to implement to simulate a Markov chain model, requiring a large number of Monte Carlo scenarios (order of 10M). We started using numpy and it was fast. But, we wanted <em>faster</em>, and realised that the model is a good example where the vectorisation approach adds unnessary overheads that are unavoidable with numpy. So, we considered numba. </p>
+<h2 id="Markov-Chain"><a href="#Markov-Chain" class="headerlink" title="Markov Chain"></a>Markov Chain</h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Markov-cheese-lettuce-grapes.svg" alt="markov chain: cheese lettuce grapes, from Wiki"><br>Source: <a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Markov_chain" >Wikipedia<i class="fas fa-external-link-alt"></i></a></p>
+<p>A (discrete-time) markov chain is a stochastic model with many real life applications. See the relevant <a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Markov_chain" >Wikipedia<i class="fas fa-external-link-alt"></i></a> page for more information. The model is described in terms of</p>
+<ul>
+<li>a finite set of states</li>
+<li>transition probabilities from one state to another state</li>
+</ul>
+<p>To simulate a markov chain, </p>
+<ul>
+<li>set the intial state</li>
+<li>draw a uniform random number between 0 and 1</li>
+<li>compare to the cumulative transition probabilities to determine the next state</li>
+<li>repeat</li>
+</ul>
+<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><p>For benchmark purposes, three functions are implemented to simulate the model:</p>
+<ol>
+<li>Native Python</li>
+<li>Native Python with numby (via njit)</li>
+<li>Numpy implementation</li>
+</ol>
+<p>Here is a code block. Only the first function is documented. The other two functions have the same arguments and return values. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Nativa Python version</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">markov_chain_simulation_naive</span>(<span class="params">v_curr_state, v_draw, mtx_CTP0</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Markov chain simulation</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        v_curr_state (1-d numpy vector, integer): vector of current states</span></span><br><span class="line"><span class="string">        v_draw (1-d numpy vector, float): vector of uniform random numbers between 0 and 1</span></span><br><span class="line"><span class="string">        mtx_CTP0 (1-d numpy matrix, float): cumulative transition probability matrix without the last column (which consists of ones by definition)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        1-d numpy vector, integer: vector of next states</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    v_next_state = np.empty_like(v_curr_state)</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(v_next_state.size):</span><br><span class="line">        curr_s = v_curr_state[n]</span><br><span class="line">        v_next_state[n] = digitize_scalar_nb(v_draw[n], mtx_CTP0[curr_s])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> v_next_state</span><br><span class="line"></span><br><span class="line"><span class="comment"># Nativa Python version (identical to above), numba&#x27;ed</span></span><br><span class="line"><span class="meta">@njit(<span class="params">fastmath=<span class="literal">True</span>, cache=<span class="literal">True</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">markov_chain_simulation_nb</span>(<span class="params">v_curr_state, v_draw, mtx_CTP0</span>):</span></span><br><span class="line">    v_next_state = np.empty_like(v_curr_state)</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(v_next_state.size):</span><br><span class="line">        curr_s = v_curr_state[n]</span><br><span class="line">        v_next_state[n] = digitize_scalar_nb(v_draw[n], mtx_CTP0[curr_s])</span><br><span class="line">    <span class="keyword">return</span> v_next_state</span><br><span class="line"></span><br><span class="line"><span class="comment"># Numpy implementation</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">markov_chain_simulation_np</span>(<span class="params">v_curr_state, v_draw, mtx_CTP0</span>):</span></span><br><span class="line">    v_next_state = np.empty_like(v_curr_state)</span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, mtx_CTP0.shape[<span class="number">0</span>]):</span><br><span class="line">        mask = v_curr_state == s</span><br><span class="line">        v_next_state[mask] = np.digitize(v_draw[mask], mtx_CTP0[s])</span><br><span class="line">    <span class="keyword">return</span> v_next_state</span><br></pre></td></tr></table></figure>
+
+<p>Observe that the native Python code, which is <em>numba’ed</em>, is as simple as the numpy version. In fact, I argue that it is simpler and easier to understand. </p>
+<h2 id="Simulations"><a href="#Simulations" class="headerlink" title="Simulations"></a>Simulations</h2><img src="/2021/09/05/numba-fast/sample-paths.png" class=""> 
+
+
+<p>First, the number of states should be specified together with the transition probabilities among them. The cumulative probabilities are required as inputs to the simulation</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># number of states</span></span><br><span class="line">num_state = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># define transition probability matrix</span></span><br><span class="line">mtx_TP = np.random.uniform(<span class="number">0.0</span>, <span class="number">1.0</span>, (num_state, num_state))</span><br><span class="line">mtx_TP /= np.<span class="built_in">sum</span>(mtx_TP, axis=<span class="number">1</span>, keepdims=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># cumulative transition probability matrix</span></span><br><span class="line">mtx_CPT = np.cumsum(mtx_TP, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Then, we simulate the model over several steps for a large number of scenarios. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">num_step = <span class="number">10</span></span><br><span class="line">seed = <span class="number">1234</span></span><br><span class="line"></span><br><span class="line">num_draw = <span class="number">1000000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># initialise</span></span><br><span class="line">v_init_state = np.random.randint(<span class="number">0</span>, num_state, num_draw)</span><br><span class="line"></span><br><span class="line"><span class="comment"># simulation: naive</span></span><br><span class="line">rng = np.random.default_rng(seed)</span><br><span class="line">td = <span class="number">0.0</span></span><br><span class="line">v_next_naive = v_init_state.copy()</span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(num_step):</span><br><span class="line">    v_draw = rng.uniform(<span class="number">0.0</span>, <span class="number">1.0</span>, num_draw)</span><br><span class="line">    t0 = time.time()</span><br><span class="line">    v_next_naive = markov_chain_simulation_naive(v_next_naive, v_draw, mtx_CPT0)</span><br><span class="line">    td += time.time() - t0</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;naive: &#x27;</span> + <span class="built_in">str</span>(td) + <span class="string">&#x27; seconds&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ..... omitted for numba and numpy simulations ......</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><ul>
+<li><p>When 1M scenarios over 10 steps are used: The numba verison (0.12 seconds) is </p>
+<ul>
+<li>over 50 time faster than the naive version (6.7 seconds)</li>
+<li>over 3 time faster than the <strong>numpy</strong> version (0.43 seconds)</li>
+</ul>
+</li>
+<li><p>When 10M scenarios are used, the numba version (1.39 seconds) is again over 3 times fater than the numpy version (4.98 seconds).</p>
+</li>
+</ul>
+<h1 id="In-Closing"><a href="#In-Closing" class="headerlink" title="In Closing"></a>In Closing</h1><p>In this post, we have provided an illustrative example where numba can be used to speed up Markov chain simulations. Not only the <em>numba’ed</em> native Python code is actually simpler than the numpy version, it is noticeably faster; in our experiments, over 3 times faster. </p>
+<p>So, numba is a great supplementary package that can be utilised when procedures/algorithms are not easily vectorisable. </p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/python/">#python</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/numba/">#numba</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/numpy/">#numpy</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/markov-chain/">#markov_chain</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/monte-carlo/">#monte_carlo</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/09/18/garch11/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Illustration of Volatility Clustering using Garch</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/09/04/debug-jb-code/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Debug Jupyter Python Notebook via VS Code</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">XYZ</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
