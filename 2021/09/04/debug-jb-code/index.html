@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="XYZ">
+    <meta name="author" content="xyz">
     
     <title>
         
@@ -26,7 +26,11 @@
     KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/xyise.png","favicon":"/images/xyise.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/main_bar.png"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
-<meta name="generator" content="Hexo 6.0.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head>
 
 
 <body>
@@ -158,9 +162,7 @@
                 </div>
                 <div class="info">
                     <div class="author">
-                        <span class="name">XYZ</span>
-                        
-                            <span class="author-label">Lv1</span>
+                        <span class="name">xyz</span>
                         
                     </div>
                     <div class="meta-info">
@@ -207,18 +209,18 @@
             <p>VS Code finally supports debugging for Jupyter Notebook. See <a class="link"   target="_blank" rel="noopener" href="https://devblogs.microsoft.com/python/python-in-visual-studio-code-october-2021-release/" >‘October 2021 Release’<i class="fas fa-external-link-alt"></i></a>. So the following is obsolete!</p>
 <h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>When writing a notebook using Jupyter (Notebook or Lab), it is common to write actual codes as separate modules (.py) and call them from the notebook. In this post, we show how to use VS Code debugger from Jupyter to debug (i) cells within Jupyter and (ii) codes in .py files. Surprisingly, I couldn’t find any memos explaining this elsewhere.</p>
 <h1 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h1><ul>
-<li><p>Install <a target="_blank" rel="noopener" href="https://github.com/microsoft/debugpy"><code>debugpy</code></a></p>
-</li>
-<li><p>Add a new config in VS Code</p>
-<ul>
-<li><p>click the bug/triangle button on the left. </p>
+<li>Install <a target="_blank" rel="noopener" href="https://github.com/microsoft/debugpy"><code>debugpy</code></a></li>
+<li>Add a new config in VS Code<ul>
+<li><p>click the bug&#x2F;triangle button on the left. </p>
 </li>
 <li><p>click the gear button. This will open <code>launch.json</code></p>
-<img src="/2021/09/04/debug-jb-code/vs_gear.png" class="" width="250"></li>
+<img src="/2021/09/04/debug-jb-code/vs_gear.png" class="" width="250">
+</li>
 <li><p>click <code>Add Configuration</code> -&gt; <code>Python</code> -&gt; <code>Remote Attach</code></p>
 </li>
-<li><p>simply accept the defaults (host = localhost, port = 5678) by pressing enters twice. </p>
-<img src="/2021/09/04/debug-jb-code/code15.png" class="" width="250"></li>
+<li><p>simply accept the defaults (host &#x3D; localhost, port &#x3D; 5678) by pressing enters twice. </p>
+<img src="/2021/09/04/debug-jb-code/code15.png" class="" width="250">
+</li>
 <li><p>This will create an additional config</p>
 </li>
 </ul>
@@ -238,17 +240,13 @@
 <td align="center"><img src="/2021/09/04/debug-jb-code/code1.png" class=""></td>
 <td align="center"><img src="/2021/09/04/debug-jb-code/jupyter1.png" class=""></td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
 </tbody></table>
 <ul>
 <li>From Jupyter: Execute step 3.</li>
 <li>Go back to VS Code and Select <code>Python: Remote Attach</code> and click the green triange<img src="/2021/09/04/debug-jb-code/code2.png" class="" width="250"> </li>
 <li>Then, you will be connected and should be able to see the following: <img src="/2021/09/04/debug-jb-code/code3.png" class="" width="250"></li>
 <li>From Jupyter, exceute step 4. The <code>breakpoint()</code> command invokes a debug activity. </li>
-<li>Then, go back to VS Code. The cell is copied into a temperary file in VS Code. You can debug the codes in the usual way. </li>
+<li>Then, go back to VS Code. The cell is copied into a temperary file in VS Code. You can debug the codes in the usual way.</li>
 </ul>
 
         </div>
@@ -314,7 +312,7 @@
               <span>2020</span>
               -
             
-            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">XYZ</a>
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">xyz</a>
         </div>
         
         <div class="theme-info info-item">
