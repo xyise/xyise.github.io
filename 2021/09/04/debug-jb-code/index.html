@@ -27,7 +27,7 @@
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head>
@@ -207,45 +207,62 @@
 
         <div class="article-content markdown-body">
             <p>VS Code finally supports debugging for Jupyter Notebook. See <a class="link"   target="_blank" rel="noopener" href="https://devblogs.microsoft.com/python/python-in-visual-studio-code-october-2021-release/" >‘October 2021 Release’<i class="fas fa-external-link-alt"></i></a>. So the following is obsolete!</p>
-<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>When writing a notebook using Jupyter (Notebook or Lab), it is common to write actual codes as separate modules (.py) and call them from the notebook. In this post, we show how to use VS Code debugger from Jupyter to debug (i) cells within Jupyter and (ii) codes in .py files. Surprisingly, I couldn’t find any memos explaining this elsewhere.</p>
-<h1 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h1><ul>
+<h1 id="background"><a class="markdownIt-Anchor" href="#background"></a> Background</h1>
+<p>When writing a notebook using Jupyter (Notebook or Lab), it is common to write actual codes as separate modules (.py) and call them from the notebook. In this post, we show how to use VS Code debugger from Jupyter to debug (i) cells within Jupyter and (ii) codes in .py files. Surprisingly, I couldn’t find any memos explaining this elsewhere.</p>
+<h1 id="preparation"><a class="markdownIt-Anchor" href="#preparation"></a> Preparation</h1>
+<ul>
 <li>Install <a target="_blank" rel="noopener" href="https://github.com/microsoft/debugpy"><code>debugpy</code></a></li>
-<li>Add a new config in VS Code<ul>
-<li><p>click the bug&#x2F;triangle button on the left. </p>
+<li>Add a new config in VS Code
+<ul>
+<li>
+<p>click the bug/triangle button on the left.</p>
 </li>
-<li><p>click the gear button. This will open <code>launch.json</code></p>
+<li>
+<p>click the gear button. This will open <code>launch.json</code></p>
 <img src="/2021/09/04/debug-jb-code/vs_gear.png" class="" width="250">
 </li>
-<li><p>click <code>Add Configuration</code> -&gt; <code>Python</code> -&gt; <code>Remote Attach</code></p>
+<li>
+<p>click <code>Add Configuration</code> -&gt; <code>Python</code> -&gt; <code>Remote Attach</code></p>
 </li>
-<li><p>simply accept the defaults (host &#x3D; localhost, port &#x3D; 5678) by pressing enters twice. </p>
+<li>
+<p>simply accept the defaults (host = localhost, port = 5678) by pressing enters twice.</p>
 <img src="/2021/09/04/debug-jb-code/code15.png" class="" width="250">
 </li>
-<li><p>This will create an additional config</p>
+<li>
+<p>This will create an additional config</p>
 </li>
 </ul>
 </li>
 </ul>
-<h1 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h1><ul>
+<h1 id="action"><a class="markdownIt-Anchor" href="#action"></a> Action</h1>
+<ul>
 <li>Here is an example:</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th align="center">VS Code</th>
-<th align="center">Jupyter</th>
+<th style="text-align:center">VS Code</th>
+<th style="text-align:center">Jupyter</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"><img src="/2021/09/04/debug-jb-code/code1.png" class=""></td>
-<td align="center"><img src="/2021/09/04/debug-jb-code/jupyter1.png" class=""></td>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="/2021/09/04/debug-jb-code/code1.png" class=""></td>
+<td style="text-align:center"><img src="/2021/09/04/debug-jb-code/jupyter1.png" class=""></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <ul>
 <li>From Jupyter: Execute step 3.</li>
-<li>Go back to VS Code and Select <code>Python: Remote Attach</code> and click the green triange<img src="/2021/09/04/debug-jb-code/code2.png" class="" width="250"> </li>
-<li>Then, you will be connected and should be able to see the following: <img src="/2021/09/04/debug-jb-code/code3.png" class="" width="250"></li>
-<li>From Jupyter, exceute step 4. The <code>breakpoint()</code> command invokes a debug activity. </li>
+<li>Go back to VS Code and Select <code>Python: Remote Attach</code> and click the green triange</li>
+</ul>
+<img src="/2021/09/04/debug-jb-code/code2.png" class="" width="250"> 
+<ul>
+<li>Then, you will be connected and should be able to see the following:</li>
+</ul>
+<img src="/2021/09/04/debug-jb-code/code3.png" class="" width="250">
+<ul>
+<li>From Jupyter, exceute step 4. The <code>breakpoint()</code> command invokes a debug activity.</li>
 <li>Then, go back to VS Code. The cell is copied into a temperary file in VS Code. You can debug the codes in the usual way.</li>
 </ul>
 
