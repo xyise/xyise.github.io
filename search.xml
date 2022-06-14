@@ -374,6 +374,7 @@ which can be easily shown to be the EWMA volatility. For typical parametrisation
 <li>dashed line: average changes.</li>
 </ul>
 </li>
+<li>code <a class="link" href="https://github.com/xyise/xyise/blob/main/notebook/kalman_filter/nb_kalman.ipynb">here<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
 <h1 id="setup"><a class="markdownIt-Anchor" href="#setup"></a> Setup</h1>
 <p>Notation:</p>
@@ -1877,6 +1878,7 @@ The only remaining task is to specify appropriate estimators for given time seri
 <ul>
 <li>Different estimators can be used (e.g. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">[</mo><msub><mi>X</mi><mi>t</mi></msub><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">E[X_t]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span> could be estimated using the medien).</li>
 <li>Having stable and less volatile parameters does not mean that the model has a better forecasting capability. The model should be backtested.</li>
+<li>For codes use to create plots, <a class="link" href="https://github.com/xyise/xyise/blob/main/notebook/mr-ou/nb_estim.ipynb">here<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
 ]]></content>
       <tags>
