@@ -48,7 +48,7 @@ In terms of vorticity $\omega = - \nabla^2 \psi$,
 If the periodic boundary condition is assumed, it is straightforward to implement the 2D equation using the standard spectral method with a standard ODE solver such as Runge-Kutta methods. 
 
 ## Fourier Transform
-To the end, take the (discrete) Fourier transform $\mathcal F$ of (\ref{E:ns2d-omeag})
+To this end, take the (discrete) Fourier transform $\mathcal F$ of (\ref{E:ns2d-omeag})
 \begin{equation}
 \frac{\partial \hat\omega}{\partial t}(\vec{k}) + \mathcal F \left[J\right] (\vec{k}) = - \nu k^2 \hat\omega(\vec{k}).
 \label{E:ns2d-omeag-k}

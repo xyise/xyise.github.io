@@ -12,7 +12,7 @@ mathjax: true
 | :--: | :--: |
 |[source](https://www.theguardian.com/law/2011/oct/02/formula-justice-bayes-theorem-miscarriage)|[source](https://www.theguardian.com/world/2021/apr/18/obscure-maths-bayes-theorem-reliability-covid-lateral-flow-tests-probability)|
 
-This post is a personal review post on the Bayesian Inference.
+This post is a personal review on the Bayesian Inference.
 
 # Prior and Posterial Probabilities
 
@@ -48,8 +48,8 @@ Table with all prior probabilities:
 
 |test \ covid|Y|N|
 | :--: | :--: | :--: |
-|+|$P(+\|Y)$: sensitivity, true positive|$P(+\|N)$: false positive|
-|-|$P(-\|Y)$: false negative|$P(-\|N)$: specificity, true negative|
+|+| $P( + \vert Y) $: sensitivity, true positive|$P(+\vert N)$: false positive|
+|-| $P(-\vert Y) $: false negative|$P(-\vert N)$: specificity, true negative|
 |sum| 1 | 1 |
 
 ***Posterior probabilities***: When we perform a test, we would like to know
@@ -60,8 +60,8 @@ Table with all posterial probabilities:
 
 |test \ covid|Y|N|sum|
 | :--: | :--: | :--: | :--: |
-|+|$P(Y\|+)$: correct |$P(N\|+)$: incorrect | 1 |
-|-|$P(Y\|-)$: incorrect |$P(N\|-)$: correct | 1 |
+|+|$P(Y \vert +)$: correct |$P(N \vert +)$: incorrect | 1 |
+|-|$P(Y \vert -)$: incorrect |$P(N \vert -)$: correct | 1 |
 
 Now, let's consider the [RLF](https://www.nhs.uk/conditions/coronavirus-covid-19/testing/regular-rapid-coronavirus-tests-if-you-do-not-have-symptoms/) test kit, which has 99.9% sensitivity, or
 $$ P(+|Y) = P(-|N) = 0.999$$

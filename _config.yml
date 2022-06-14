@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: XYISE
+title: xYiSe
 subtitle: ''
 description: ''
 keywords:
@@ -114,3 +114,13 @@ mathjax:
   normal_width: 0.6 # relative normal (monospace) width
   append_css: true # add CSS to pages rendered by MathJax
   every_page: false # if true, every page will be rendered by MathJax regardless the `mathjax` setting in Front-matter
+
+math:
+  engine: katex
+  katex:
+    css: https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css
+    js: https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js
+    config:
+      # KaTeX config
+      throwOnError: false
+      errorColor: "#cc0000"

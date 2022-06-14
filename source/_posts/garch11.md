@@ -29,7 +29,7 @@ where
 * $\epsilon_t$ is the innovation variable, assumed to be Gaussian (for simplicity) and i.i.d. over time.
 * $\mu$ is the drift parameter for $r_t$
 * $\sigma_\infty$, $\beta$ and $\gamma$ are Garch(1,1) model parameters with 
-$$ \sigma_\infty > 0,\quad \beta \ge 0, \quad \gamma \ge 0,\quad \beta + \gamma < 1. \nonumber $$
+$$ \sigma_\infty > 0,\quad \beta \ge 0, \quad \gamma \ge 0,\quad \beta + \gamma < 1. $$
 
 References: See [this wiki](https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity) page for the model general model Garch(p,q) as well as other Garch families. 
 

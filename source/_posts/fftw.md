@@ -7,12 +7,15 @@ tags:
 - memo
 mathjax: true
 ---
+
+[FFTW](http://www.fftw.org/) is a popular C-library for computing the discrete Fourier transform and its [documentation page](http://www.fftw.org/#documentation) provides comprehesive information on the library. For Python, [pyFFTW](https://github.com/pyFFTW/pyFFTW) provides an excellent wrapper. Below, we show a simple example in both C and Python versions to illustrate how the Python wrapper corresponds to the actual library. 
+
+***
 $$
 X_{k} = \sum_{k=0}^{N-1} e^{-2\pi i k / N} x_i
 $$
 ***
 
-[FFTW](http://www.fftw.org/) is a popular C-library for computing the discrete Fourier transform and its [documentation page](http://www.fftw.org/#documentation) provides comprehesive information on the library. For Python, [pyFFTW](https://github.com/pyFFTW/pyFFTW) provides an excellent wrapper. Below, we show a simple example in both C and Python versions to illustrate how the Python wrapper corresponds to the actual library. 
 
 # Example
 
