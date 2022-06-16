@@ -596,6 +596,33 @@ and<br>
       </tags>
   </entry>
   <entry>
+    <title>Treasury Bond Yield Curve</title>
+    <url>/2022/06/16/bond-curve-treasury/</url>
+    <content><![CDATA[<p>FT reports “[US 10-year Treasury yield reaches 3% for first time since 2018]”(<a class="link" href="https://www.ft.com/content/b164866c-90b4-47fc-bf17-8f5b300564e3">https://www.ft.com/content/b164866c-90b4-47fc-bf17-8f5b300564e3<i class="fas fa-external-link-alt"></i></a>)" in 2nd May 2022. But, what do they mean by US 10-year Treasury? Nowhere in the article, they defined what it was and mostly likely it was the yield rate of the <em>most recently-issued</em> (also known as on-the-run) 10-year note (see <a class="link" href="https://treasurydirect.gov/indiv/indiv.htm">here<i class="fas fa-external-link-alt"></i></a> for various debt types inclduing note), or possibly the yield implied from the futures contract on 10-year tenor (see <a class="link" href="https://www.cmegroup.com/trading/interest-rates/us-treasury.html">here<i class="fas fa-external-link-alt"></i></a>). But, what about 30-year bond issued 20 years ago (referred to as <em>vintaged</em>) with 10-year time-to-maturity left? How is it related to the headline 10-year yield?</p>
+<h1 id="all-bonds"><a class="markdownIt-Anchor" href="#all-bonds"></a> All Bonds</h1>
+<p>Most market data sites such as <a class="link" href="https://finance.yahoo.com/bonds">yahoo<i class="fas fa-external-link-alt"></i></a> show the yields at only a few <em>benchmark</em> tenors such as 2-, 5-, 10- and 30-years. But, there are many more bonds out there. Limiting ourselfs to only conventional bonds (fixed-coupon bonds of type ‘note’ and ‘bond’), the figure below shows a scatter plot of time-to-maturity and yield pairs across all relevant ISINs as of 15th June 2022 (a historic date when the Federal Reserve increase the fund rate by 75bp).</p>
+<img src="/2022/06/16/bond-curve-treasury/yield.png" class="" width="1000">
+<ul>
+<li>price data sourced from <a class="link" href="https://www.treasurydirect.gov/GA-FI/FedInvest/selectSecurityPriceDate">TreasuryDirect<i class="fas fa-external-link-alt"></i></a></li>
+<li>yields (dots) are calculated using <a class="link" href="https://quantlib-python-docs.readthedocs.io/en/latest/instruments/bonds.html">Python QuantLib Bond<i class="fas fa-external-link-alt"></i></a> library.</li>
+<li>The backbone curve (dashed line) is calculated by applying a rolling average.</li>
+</ul>
+<p>While the yield data provides a reasonably smooth term-structure, there are some notable deviations from the backbone curve, e.g. near 20y tenor. In the rest of this article, we look at the basis quantities (differences between the ISIN-specific yield rates and the backbone rates) to learn underlying structures.</p>
+<h1 id="on-the-run-and-vintaged"><a class="markdownIt-Anchor" href="#on-the-run-and-vintaged"></a> On-the-run and Vintaged</h1>
+<p>First, the plot below shows that the yields from the 20y bonds (brown line) are significantly different from those from the 10y-old 30y bonds (pinks). One reasonable explanation is the difference in coupon size as indicated by the marker size. The 30y bonds issued 10 years ago had larger coupons than those issued recently.</p>
+<img src="/2022/06/16/bond-curve-treasury/yield-30y.png" class="" width="1000">
+<p>Next, we focus on 5y (green), 7y (red) and 10y (purple) bonds. For each of the branches, the far-right point corresponds to the most recently-issued security, known as <em>on-the-run</em>. In general(not always), the demand on such bonds is high and leads to higher valuations (equivalently, lower their yields). This is indeed the case for the yields for the 5y- and 10y- on-the-run bonds. However, it is certainly not the case for the 7-year on-the-run bond, which has a higher yield than other 7-year bonds.</p>
+<img src="/2022/06/16/bond-curve-treasury/yield-10y.png" class="" width="1000">
+<p>Finally, we focus on 2y (blue) and 3y (orange) bonds below and make similar observations as above.</p>
+<img src="/2022/06/16/bond-curve-treasury/yield-3y.png" class="" width="1000">
+]]></content>
+      <tags>
+        <tag>bond</tag>
+        <tag>finance</tag>
+        <tag>treasury</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Debug Jupyter Python Notebook via VS Code</title>
     <url>/2021/09/04/debug-jb-code/</url>
     <content><![CDATA[<p>VS Code finally supports debugging for Jupyter Notebook. See <a class="link"   href="https://devblogs.microsoft.com/python/python-in-visual-studio-code-october-2021-release/" >‘October 2021 Release’<i class="fas fa-external-link-alt"></i></a>. So the following is obsolete!</p>
@@ -1884,33 +1911,6 @@ Source: <a class="link"   href="https://en.wikipedia.org/wiki/Markov_chain" >Wik
         <tag>numpy</tag>
         <tag>markov_chain</tag>
         <tag>monte_carlo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Treasury Bond Yield Curve</title>
-    <url>/2022/06/16/bond-curve-treasury/</url>
-    <content><![CDATA[<p>FT reports “[US 10-year Treasury yield reaches 3% for first time since 2018]”(<a class="link" href="https://www.ft.com/content/b164866c-90b4-47fc-bf17-8f5b300564e3">https://www.ft.com/content/b164866c-90b4-47fc-bf17-8f5b300564e3<i class="fas fa-external-link-alt"></i></a>)" in 2nd May 2022. But, what do they mean by US 10-year Treasury? Nowhere in the article, they defined what it was and mostly likely it was the yield rate of the <em>most recently-issued</em> (also known as on-the-run) 10-year note (see <a class="link" href="https://treasurydirect.gov/indiv/indiv.htm">here<i class="fas fa-external-link-alt"></i></a> for various debt types inclduing note), or possibly the yield implied from the futures contract on 10-year tenor (see <a class="link" href="https://www.cmegroup.com/trading/interest-rates/us-treasury.html">here<i class="fas fa-external-link-alt"></i></a>). But, what about 30-year bond issued 20 years ago (referred to as <em>vintaged</em>) with 10-year time-to-maturity left? How is it related to the headline 10-year yield?</p>
-<h1 id="all-bonds"><a class="markdownIt-Anchor" href="#all-bonds"></a> All Bonds</h1>
-<p>Most market data sites such as <a class="link" href="https://finance.yahoo.com/bonds">yahoo<i class="fas fa-external-link-alt"></i></a> show the yields at only a few <em>benchmark</em> tenors such as 2-, 5-, 10- and 30-years. But, there are many more bonds out there. Limiting ourselfs to only conventional bonds (fixed-coupon bonds of type ‘note’ and ‘bond’), the figure below shows a scatter plot of time-to-maturity and yield pairs across all relevant ISINs as of 15th June 2022 (a historic date when the Federal Reserve increase the fund rate by 75bp).</p>
-<img src="/2022/06/16/bond-curve-treasury/yield.png" class="" width="1000">
-<ul>
-<li>price data sourced from <a class="link" href="https://www.treasurydirect.gov/GA-FI/FedInvest/selectSecurityPriceDate">TreasuryDirect<i class="fas fa-external-link-alt"></i></a></li>
-<li>yields (dots) are calculated using <a class="link" href="https://quantlib-python-docs.readthedocs.io/en/latest/instruments/bonds.html">Python QuantLib Bond<i class="fas fa-external-link-alt"></i></a> library.</li>
-<li>The backbone curve (dashed line) is calculated by applying a rolling average.</li>
-</ul>
-<p>While the yield data provides a reasonably smooth term-structure, there are some notable deviations from the backbone curve, e.g. near 20y tenor. In the rest of this article, we look at the basis quantities (differences between the ISIN-specific yield rates and the backbone rates) to learn underlying structures.</p>
-<h1 id="on-the-run-and-vintaged"><a class="markdownIt-Anchor" href="#on-the-run-and-vintaged"></a> On-the-run and Vintaged</h1>
-<p>First, the plot below shows that the yields from the 20y bonds (brown line) are significantly different from those from the 10y-old 30y bonds (pinks). One reasonable explanation is the difference in coupon size as indicated by the marker size. The 30y bonds issued 10 years ago had larger coupons than those issued recently.</p>
-<img src="/2022/06/16/bond-curve-treasury/yield-30y.png" class="" width="1000">
-<p>Next, we focus on 5y (green), 7y (red) and 10y (purple) bonds. For each of the branches, the far-right point corresponds to the most recently-issued security, known as <em>on-the-run</em>. In general(not always), the demand on such bonds is high and leads to higher valuations (equivalently, lower their yields). This is indeed the case for the yields for the 5y- and 10y- on-the-run bonds. However, it is certainly not the case for the 7-year on-the-run bond, which has a higher yield than other 7-year bonds.</p>
-<img src="/2022/06/16/bond-curve-treasury/yield-10y.png" class="" width="1000">
-<p>Finally, we focus on 2y (blue) and 3y (orange) bonds below and make similar observations as above.</p>
-<img src="/2022/06/16/bond-curve-treasury/yield-3y.png" class="" width="1000">
-]]></content>
-      <tags>
-        <tag>bond</tag>
-        <tag>finance</tag>
-        <tag>treasury</tag>
       </tags>
   </entry>
 </search>
