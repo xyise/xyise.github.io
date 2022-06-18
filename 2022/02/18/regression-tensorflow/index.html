@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="y">
+    
+    <title>
+        
+            Hello, OLS! in Tensorflow |
+        
+        xYiSe
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/xyise.png">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"xyise.github.io","root":"/","language":"","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/xyise.png","favicon":"/images/xyise.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/main_bar.png"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/xyise.png">
+                </a>
+            
+            <a class="logo-title" href="/">
+                xYiSe
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               target="_blank" rel="noopener" href="https://gist.github.com/xyise/938da63aeb040247103043592ea84a5a"
+                            >
+                                MY GISTS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       target="_blank" rel="noopener" href="https://gist.github.com/xyise/938da63aeb040247103043592ea84a5a">MY GISTS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Hello, OLS! in Tensorflow</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/xyise.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">y</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-02-18 22:44:41</span>
+        <span class="mobile">2022-02-18 22:44</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/tensorflow/">tensorflow</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/example/">example</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>Proably, the most widely-used <em>Hello, World!</em> in statistical learning is implementing an OLS regression, and the purpose of this post is to show two sets of codes based on TensorFlow with and without Keras.</p>
+<p>Warning: What is shown here is even <em>more basic</em> than the TensorFlow <a class="link"   target="_blank" rel="noopener" href="https://www.tensorflow.org/guide/basics" >basics<i class="fas fa-external-link-alt"></i></a>.</p>
+<h1 id="data-generation"><a class="markdownIt-Anchor" href="#data-generation"></a> Data Generation</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create (x,y) pairs</span></span><br><span class="line">x = tf.linspace(-<span class="number">2</span>, <span class="number">2</span>, <span class="number">201</span>) <span class="comment"># default is float64</span></span><br><span class="line">x = tf.cast(x, tf.float32) <span class="comment"># cast to 32</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">    y = <span class="number">2</span>*x - <span class="number">5</span></span><br><span class="line">    <span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line">y = f(x) + tf.random.normal(shape=[<span class="number">201</span>])</span><br><span class="line"></span><br><span class="line">plt.plot(x, y, <span class="string">&#x27;.&#x27;</span>, label=<span class="string">&#x27;data&#x27;</span>)</span><br><span class="line">plt.plot(x, f(x), label=<span class="string">&#x27;truth&#x27;</span>)</span><br><span class="line">plt.legend()</span><br></pre></td></tr></table></figure>
+<center>
+<img src="data.png">
+</center>
+<h1 id="ols-regression"><a class="markdownIt-Anchor" href="#ols-regression"></a> OLS Regression</h1>
+<h2 id="without-keras"><a class="markdownIt-Anchor" href="#without-keras"></a> Without Keras</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># y = w x + b</span></span><br><span class="line"><span class="comment"># variables = [w, b]</span></span><br><span class="line">variables = [tf.Variable([[<span class="number">0.1</span>]]), tf.Variable([<span class="number">0.1</span>])]</span><br><span class="line"></span><br><span class="line">learning_rate = <span class="number">0.01</span></span><br><span class="line"><span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>):</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># define MSE</span></span><br><span class="line">    <span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> tape:</span><br><span class="line">        predition = x[:, tf.newaxis] @ variables[<span class="number">0</span>] + variables[<span class="number">1</span>]</span><br><span class="line">        predition = tf.squeeze(predition, axis=<span class="number">1</span>)</span><br><span class="line">        error = (y-predition)**<span class="number">2</span></span><br><span class="line">        mean_error = tf.reduce_mean(error)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># calculate gradient and update variables</span></span><br><span class="line">    gradient = tape.gradient(mean_error, variables)</span><br><span class="line">    variables[<span class="number">0</span>].assign_add(- learning_rate*gradient[<span class="number">0</span>])</span><br><span class="line">    variables[<span class="number">1</span>].assign_add(- learning_rate*gradient[<span class="number">1</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> step % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;mean squared error: &#x27;</span> + <span class="built_in">str</span>(mean_error.numpy()))</span><br><span class="line"></span><br><span class="line"><span class="comment"># show fit</span></span><br><span class="line">plt.figure()</span><br><span class="line">plt.plot(x, y, <span class="string">&#x27;.&#x27;</span>, label=<span class="string">&#x27;data&#x27;</span>)</span><br><span class="line">plt.plot(x, f(x), label=<span class="string">&#x27;truth&#x27;</span>)</span><br><span class="line">plt.plot(x, predition, label=<span class="string">&#x27;trained&#x27;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<img src="/2022/02/18/regression-tensorflow/without.png" class="" width="300">
+<h2 id="with-keras"><a class="markdownIt-Anchor" href="#with-keras"></a> With Keras</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># define a linear model (simplest)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinearModel</span>(<span class="params">tf.keras.Model</span>):</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="comment"># this defines wx + b</span></span><br><span class="line">        self.dense = tf.keras.layers.Dense(units=<span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">call</span>(<span class="params">self, x, training=<span class="literal">True</span></span>):</span></span><br><span class="line">        x = x[:, tf.newaxis] <span class="comment"># x is expected to be a 1D array</span></span><br><span class="line">        x = self.dense(x)</span><br><span class="line">        <span class="keyword">return</span> tf.squeeze(x, axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># initialise model and run Keras methods</span></span><br><span class="line">model = LinearModel()</span><br><span class="line">model.<span class="built_in">compile</span>(loss=tf.keras.losses.MSE,</span><br><span class="line">                 optimizer=tf.keras.optimizers.SGD(learning_rate=<span class="number">0.01</span>))</span><br><span class="line">history = model.fit(x, y, epochs=<span class="number">100</span>, batch_size=<span class="number">51</span>, verbose=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot</span></span><br><span class="line">plt.figure()</span><br><span class="line">plt.plot(x, y, <span class="string">&#x27;.&#x27;</span>, label=<span class="string">&#x27;data&#x27;</span>)</span><br><span class="line">plt.plot(x, f(x), label=<span class="string">&#x27;truth&#x27;</span>)</span><br><span class="line">plt.plot(x, model(x), label=<span class="string">&#x27;trained&#x27;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;loss&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epoch&#x27;</span>), plt.ylabel(<span class="string">&#x27;loss&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<table>
+<tr>
+<td><img src="/2022/02/18/regression-tensorflow/with.png" class="" width="300"></td>
+<td><img src="/2022/02/18/regression-tensorflow/with-hist.png" class="" width="300"></td>
+</tr>
+</table>
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/tensorflow/">#tensorflow</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/example/">#example</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/03/18/t-copula/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Illustration of t-Copula</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/01/18/on-callable-bond/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">On Callble Bond</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">y</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
