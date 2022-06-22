@@ -715,7 +715,8 @@ where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.
   <entry>
     <title>Debug Jupyter Python Notebook via VS Code</title>
     <url>/2021/09/04/debug-jb-code/</url>
-    <content><![CDATA[<p>VS Code finally supports debugging for Jupyter Notebook. See <a class="link"   href="https://devblogs.microsoft.com/python/python-in-visual-studio-code-october-2021-release/" >‘October 2021 Release’<i class="fas fa-external-link-alt"></i></a>. So the following is obsolete!</p>
+    <content><![CDATA[<p>VS Code finally supports debugging for <em>its own</em> Jupyter Notebook. See <a class="link"   href="https://devblogs.microsoft.com/python/python-in-visual-studio-code-october-2021-release/" >‘October 2021 Release’<i class="fas fa-external-link-alt"></i></a>, and it works like a charm.</p>
+<p>The following is still useful with the standard version of Jupyter Notebook (e.g. through web browsers).</p>
 <h1 id="background"><a class="markdownIt-Anchor" href="#background"></a> Background</h1>
 <p>When writing a notebook using Jupyter (Notebook or Lab), it is common to write actual codes as separate modules (.py) and call them from the notebook. In this post, we show how to use VS Code debugger from Jupyter to debug (i) cells within Jupyter and (ii) codes in .py files. Surprisingly, I couldn’t find any memos explaining this elsewhere.</p>
 <h1 id="preparation"><a class="markdownIt-Anchor" href="#preparation"></a> Preparation</h1>
@@ -774,7 +775,9 @@ where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.
 <li>From Jupyter, exceute step 4. The <code>breakpoint()</code> command invokes a debug activity.</li>
 <li>Then, go back to VS Code. The cell is copied into a temperary file in VS Code. You can debug the codes in the usual way.</li>
 </ul>
-]]></content>
+<h1 id="not-found"><a class="markdownIt-Anchor" href="#not-found"></a> not found?</h1>
+<p>If the debugger does not find the relevant file, it is most likely that the path mapping needs to be specified.</p>
+<img src="/2021/09/04/debug-jb-code/code44.png" class="" width="300">]]></content>
       <tags>
         <tag>python</tag>
         <tag>vscode</tag>
