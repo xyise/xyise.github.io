@@ -1,10 +1,10 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: Gists
+permalink: /gists/
 ---
 
-To be updated
+[My gists](https://gist.github.com/xyise/938da63aeb040247103043592ea84a5a)
 
 <!-- This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
 
