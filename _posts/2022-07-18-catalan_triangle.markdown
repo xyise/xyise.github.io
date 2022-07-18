@@ -7,20 +7,13 @@ categories: maths
 
 # Random Walk and Back to Origin
 
+Consider a random walk with 50/50 chance to go up/down by a unit. Let $$X_n$$ be the location after $n$-th step with $X_0 = 0$. How many ways are there to come back to the original location at the $2n$-th step with
 
-Consider a random walk with 50/50 chance to go up/down by a unit. Let $X_n$ be the location after $n$-th step with $X_0 = 0$. How many ways are there to come back to the original location at the $2n$-th step with
 \begin{equation}
 X_j > 0 \text{ for }j = 1, \cdots, 2n-1
 \label{E:condition}
 \end{equation}
 in other words, while staying positive? The answer to this question is known to be the $\color{red}{(n-1)}$-the Catalan number. 
-
-The $n$-th [Catalan number](https://en.wikipedia.org/wiki/Catalan_number) $C(n)$ is defined as 
-\begin{eqnarray}
-C(n) = \frac{1}{n+1}\left( \begin{array}{c} 2n \\\\ n \end{array} \right) 
-= \left( \begin{array}{c} 2n \\\\ n \end{array} \right)  - \left( \begin{array}{c} 2n \\\\ n-1 \end{array} \right) 
-\label{E:catalan}
-\end{eqnarray}
 
 Whilst there are many ways to prove this, I would like to present my way as an alternative. 
 
