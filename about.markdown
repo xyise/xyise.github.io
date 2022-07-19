@@ -6,6 +6,8 @@ permalink: /about/
 
 xYiSe? This name came from XYZ but replacing Z with S to have the initials from my first name. Plus, [xyise.com](http://xyise.com) domain was available and I bought it. 
 
+This site is a collection of short articles, primarily for my own benefits (learning and remembering). No articles should contain any confidential information. 
+
 
 <!-- This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
 
