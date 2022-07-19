@@ -22,7 +22,7 @@ title: Pages of Youngsuk Lee
 author:
   email: lee.youngsuk@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  learning, mathematics, programming, finance, python
+  learning, mathematics, programming, finance
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://xyise.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
