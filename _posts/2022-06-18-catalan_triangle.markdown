@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Catalan Triangle - Alternative Proof"
-date:   2022-07-18
 categories: maths
 ---
 
