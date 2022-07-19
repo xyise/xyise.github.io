@@ -1,0 +1,101 @@
+---
+layout: page
+permalink: /cv/nw2013
+categories: cv
+title: "NatWest, London, Jan 2013 - Aug 2022"
+---
+
+## Title
+
+* Officially: Financial Risk & Analytics Lead, D12
+* Commonly known as: Risk Quantitative Analyst, Director
+
+## Summary
+
+* As the head of Traded Risk Model Development, I built and led the team of Quantitative Analysts in London and India, developing and enhancing traded risk models for risk management and regulatory capital purposes for the investment banking division (NatWest Markets).
+* We designed models through quantitative research, implemented and tested proposed models, incorporated user requirements, collaborated with data and technology teams, addressed challenges from model reviews, and sought regulatory approvals. 
+* We used Python, C#, Matlab to implement and test models 
+* The team specialised on the models for market risk (VaR, RNIV, IRC, FRTB-related metrics) and counterparty credit risk (EPE, PFE, CVA, SIMM).
+* We covered all asset classes with focus on rates, inflation, FX and credit spreads. 
+* We incorporated the risk-free-rate (RFR) transition by making relevant model changes
+* While fulfilling my managerial duty, I also ensured to be fully hands-on, allocating at least 50% of my time in modelling and coding. See [here](#notable-hands-on-works). 
+* I represented the firm in model inspection meetings with regulators on IMM, IMA, SIMM. 
+* I managed risk quant activities with the internal FRTB programme, and engaged in discussions with external parties (ISDA, regulators, training, conference). See [here](#frtb-presentations) for my presentation materials.
+
+
+## Notable Hands-on Works
+
+Below are notable examples of my hands-on works in chronological order.  
+
+### Time series outlier detection and filling (2013)
+* Description: 
+  * Devised algorithms to detect outliers of time series data and fix them
+  * Created a GUI app to scan all time series quickly and apply the methods to historical data at the time
+  * Implemented the algorithms into the new market data system for on-going detection/fix
+* Skills: statistical methods, linear algebra
+* Programming: C#, Winform, SQL
+
+### VaR for Securities Financing Transitions (SFTs) (2013)
+* Description: Developed an overarching methodology to measure potential future exposures to repo-like products
+* Skills: market risk VaR, collateral/margin
+* Programming: Matlab
+
+### Fundamental Review of Trading Book (FRTB), Standardised Approach (SA) (2015-2016)
+* Description: 
+  * Externally, contributed proactively to the ISDA FRTB working group, in particular, on the standardised approach (SA). Provided feedback on early drafts of the BIS FRTB articles and worked with other industry members to propose alternative approaches to regulators.
+  * Internally, implemented early versions of SA and participated in the quantitative impact studies and produced impact tests for the firm.
+* Skills: regulatory advocacy, training
+* Programming: C#, Excel
+
+### Credit VaR (2015-2016)
+* Description: 
+  * Developed a new model for forecasting credit spreads (bonds, CDS, CDS indices) for both market risk and CVA VaRs.
+  * Addressed outstanding weaknesses of the existing model and helped the firm retaining the model permission (IMA)
+ * Skills: systematic plus idiosyncratic framework, robust regression, cross-section method, curve fitting, PCA, time series construction, variance calculation, backtesting
+* Programming: C#, Matlab
+ 
+### ISDA Standard Initial Margin Model (SIMM) (2016-2017)
+* Description: 
+  * As a representative of the firm, contributed proactively to the industry-wide model development process and related activities through ISDA, and served as a member of the Executive SIMM committee. 
+  * Produced a firm-specific methodology and implemented the SIMM
+  * Designed and executed a model management framework including backtesting
+  * Represented the firm in the model approval process with the US Federal Reserve
+* Skills: industry engagement, regulatory advocacy, risk sensitivities, reconciliation, variance calculations
+* Programming: C#, Matlab
+
+### Sovereign Bond VaR (2018-2019)
+* Description: 
+  * Developed a new VaR model for forecasting bond spreads of G11 sovereign debts, incorporating basis risks due to differences in bond types (conventional fixed, inflation-linked, strips, floater) and ages (on-the-run, vantage). 
+  * Remediated a material RNIV, resulting in larger RWA saving. 
+* Skills: curve fitting using B-splines, robust regression, time series construction of bond curves from ISIN-level data, risky bond pricing model
+* Programming: C#, Python
+
+### FRTB Expected Shortfall (ES) (2019)
+* Description: 
+  * Wrote a firm-specific methodology of calculating ES under FRTB, specifying how to incorporate liquidity horizons and reduced sets.
+  * Guided a team member to implement calculation models
+* Skills: interpretation and application of regulatory guides
+* Programming: C#, Python
+
+### Backfilling risk-free-rate (RFR) curves on Securitised Overnight Financing Rate (SOFR) (2021)
+* Description: A part of RFR transition project, developed a method to backfill historical time series of new SOFR swap curves, set up a monitoring framework and received regulatory approval. 
+* Skills: exponentially weighted moving average (EWMA) filtering, regression, curve building from futures
+
+### Incremental Risk Charge (IRC) (2021-2022)
+* Description: 
+  * Developed a new IRC model to remediate outstanding model weaknesses while seeking a new regulatory approval. 
+  * Ensured the model was easily configurable to behave in the Default Risk Charge (DRC) mode, helping the firm prepare the FRTB IMA approval submission. 
+* Skills: Merton's framework to model migration and default events, multi-factor model for credit worthiness, parameter estimations using historical migration/default data, cross-section method, robust regression, robust correlation estimation, allocation, Monte Carlo simulation
+* Programming: Python
+
+### Risk-Not-In-VaRs (RNIV) Automatisation (2022)
+* Description: Automatised the calculation process of several material RNIVs to run on a daily basis (from monthly).
+* Skills: Python, Scheduler, Confluence
+
+
+## FRTB Presentations
+
+* [Sensitivity Based Approach - Basis Risk](frtb/FRTB_Basis.pdf): ISDA Conference on FRTB, June 2015
+* [SBA-Margin (SIMM) & SBA-Capital (FRTB)](frtb/FRTB_SIMM.pdf): WBS FRTB Conference, Feb 2016
+* [Internal Models Approach, Desk-Level Eligibility](frtb/FRTB_IMA.pdf): Risk Incisive Training on FRTB, Mar 2016
+

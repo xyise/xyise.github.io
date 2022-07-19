@@ -27,7 +27,7 @@ Note on *Kalman Gain* $K_t$:
 
 In this post, we follow the Hamilton's notation.
 
-## Illustration of 1D
+# Illustration of 1D
 
 ![image](/assets/kalman-filter/KF1.png)
 
@@ -42,13 +42,13 @@ In this post, we follow the Hamilton's notation.
     * dashed line: average changes.
 * code [here](https://github.com/xyise/xyise/blob/main/notebook/kalman_filter/nb_kalman.ipynb)
 
-## Setup
+# Setup
 
 Notation:
 * $p(x)$: pdf of a random vector
 * $f(x; \mu, \Sigma)$: pdf of multivariate normal distribution
 
-### State-Space Representation
+## State-Space Representation
 
 The Kalman Filter is used to infer the *hidden* process $\vec X_t$ (known as *state* variable) from an observed process $\vec Y_t$. The setup is the *state-space represenation* of $\vec Y$:
 
@@ -67,7 +67,7 @@ and $\vec U_t$ is exogenous (predetermined at $t-1$, for example, lagged values 
 
 We drop $\ \vec{}\ $ to simplify the notation unless absolutely required. 
 
-### Another View: Hidden Markov Model
+## Another View: Hidden Markov Model
 
 Resembling a hidden Markov model (HMM) (see the diagram below), the state-space representation provides the following conditional probabilities 
 * $\color{red} p(X_{t}\vert X_{t-1})$ from state equation (\ref{E:state-eq})
@@ -80,7 +80,7 @@ Roughly speaking, the task is to find the probability distribution for $X_t$ giv
 \color{blue} p(X_{t} | y_t, y_{t-1}, \cdots, y_1, u_t, u_{t-1}, \cdots, u_1).
 \end{equation}
 
-## Kalman Filtering
+# Kalman Filtering
 
 Let $\mathcal F_t$ be the set of data observed through time $t$
 \begin{equation}
@@ -89,7 +89,7 @@ Let $\mathcal F_t$ be the set of data observed through time $t$
 \end{equation}
 where $y_s$ and $u_s$ are the observations for $Y_s$ and $U_s$, respectively. 
 
-### Recursive Process
+## Recursive Process
 
 The filter produces three sets of random vector time series over time $t$.
 
@@ -107,7 +107,7 @@ A few observations:
 * As soon as the initial forecast $X_{1 \vert 0}$ is specified, the filtering starts to operate recursively. 
 * Since the state-space equations are linear and the innovations are white noise, all of these random vectors are Gaussians and thus fully described once their mean vectors and variance matrices are specified.
 
-### Algorithm
+## Algorithm
 
 We (kind of) follows Hamilton's Time Series Analysis....
 
@@ -117,7 +117,7 @@ The algorithm produces the following sequence
 \end{equation}
 and it is sufficient to describe how to obtain the underlined variables. 
 
-#### $X_{1|0}$: Initialisation
+### $X_{1|0}$: Initialisation
 
 In the absence of any observations, set $\color{teal} X_{1\vert 0}$ to the unconditional distribution of $X_{t}$ (assuming covariance-stationary):
 
@@ -129,7 +129,7 @@ In the absence of any observations, set $\color{teal} X_{1\vert 0}$ to the uncon
 </div>
 
 
-#### $Y_{t|t-1}$: Forecasting $Y_t$
+### $Y_{t|t-1}$: Forecasting $Y_t$
 
 The exogenous variable $u_t$ is assumed to predetermined at $t-1$.
 
@@ -177,7 +177,7 @@ Forecasting $Y_t$:
 &nbsp;
 
 
-#### $X_{t|t}$: Updating the Inference about $X_t$
+### $X_{t|t}$: Updating the Inference about $X_t$
 
 Taking into account the new observation $\color{purple} y_t$, the inference $\color{blue} X_{t\vert t}$ about $X_t$ is updated from the forecast distribution $\color{teal} X_{t\vert t-1}$
 
@@ -239,7 +239,7 @@ K_t = {\color{teal} P_{t|t-1}}H(H' {\color{teal} P_{t|t-1}} H + R)^{-1} \nonumbe
 </div>
 &nbsp;
 
-#### $X_{t+1|t}$: Forecasting $X_{t+1}$
+### $X_{t+1|t}$: Forecasting $X_{t+1}$
 
 This step is straightforward
 
@@ -271,7 +271,7 @@ Forecasting $X_{t+1}$:
 &nbsp;
 
 
-### Maximum Likelihood Estimation of Parameters
+## Maximum Likelihood Estimation of Parameters
 
 The forecast algorithm for $Y_t$ provides the likelihood of observation $y_t$
 \begin{equation}
@@ -285,12 +285,12 @@ which is maximised with respect to $F$, $Q$, $A$, $H$ and $R$.
 
 
 
-## Application to Term Structure Models
+# Application to Term Structure Models
 
 Following Section 7 of [Duffee & Stanton](http://www.econ2.jhu.edu/people/duffee/duffeeStanton2012.pdf).... 
 
 
-### Model
+## Model
 
 The short rate $r_t$ is given by 
 \begin{equation}
@@ -319,7 +319,7 @@ e^{-\tau y_t(\tau)} = P_t(\tau)\quad\textrm{or}\quad y_t(\tau) = \varphi - \sum_
 \end{equation}
 which is linear in $x$. 
 
-### State-Space Equations
+## State-Space Equations
 
 **State Equation**: For the state equation for the factors $x_t$, the first step is to introduce the price of risk to the dynamic model (\ref{E:mr-eq-q}) under $\mathcal Q$ to obtain the model under the real (physical) measure $\mathcal P$. For example, we assume
 \begin{equation}
@@ -337,7 +337,7 @@ Y_{t} = A'U_{t} + H'X_{t} + w_t
 \end{eqnarray}
 where $A_{ij} = \varphi - \frac{\alpha_i(\tau_j)}{\tau_j}$, $U_{it}=1$ and $H_{ij} = -\frac{\beta_{i}(\tau_j)}{\tau_j}$ where $i=1, \cdots, n$ and $j=1, \cdots, m$. 
 
-### Filtering
+## Filtering
 
 The application of the Kalman filter goes like this:
 * From time series of $y_{t}$, estimate the model parameters.

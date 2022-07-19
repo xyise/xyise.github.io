@@ -1,0 +1,33 @@
+---
+layout: page
+permalink: /cv/nw2010
+categories: cv
+title: "NatWest, London, Nov 2010 - Dec 2012" 
+---
+
+## Title
+
+* Officially: Independent Contractor, Deputy Head
+* Commonly known as: CCR Quantitative Analyst
+
+## Summary
+
+* Worked as the deputy head in the CCR quant team designing a suite of brand-new models for the greenfield CCR risk system, covering cross assets (rates, inflation, FX, credit) and collaterals.
+* Was a key contributor in designing and creating the team's own risk engine framework (C# and SQL) to plug models in and run initial and on-going tests including backtesting. 
+* Notably, wrote the risk factor simulation methodologies for inflation indices/curves and IR curves.
+Engaged with the regulators (PRA), helping the firm retain the model approval (IMM). 
+* Upon completion of the project, I was promoted to take the model suite over.
+
+## The Model Suite
+
+* Scope: 
+  * risk factor simulation models: IR curves, IR volatilities, inflation rate curves, inflation indices, FX, FX volatilities, credit spreads, equities
+  * pricing models: IR swaps/caps/floors/swaptions, FX forwards/options, CDSs
+  * collateral modelling: VM and IM
+  * testing: on-going model review, backtesting
+
+* Skills and modelling ingredients considered for the project
+  * time series analysis: AR(1), GBM, GARCH(1,1), Kalman filter
+  * statistical methods: PCA, regression, maximum likelihood estimation, momentum matching estimation, hypothesis testing on multinomial distribution
+  * general: Monte Carlo simulation, Nelson-Siegel parameterisation
+

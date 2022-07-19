@@ -5,7 +5,7 @@ date:   2022-07-18
 categories: maths
 ---
 
-## Random Walk and Back to Origin
+# Random Walk and Back to Origin
 
 Consider a random walk with 50/50 chance to go up/down by a unit. Let $$X_n$$ be the location after $n$-th step with $X_0 = 0$. How many ways are there to come back to the original location at the $2n$-th step with
 
@@ -48,7 +48,7 @@ The triangle tracks the number of possible paths to each circle from the startin
 
 
 
-## Catalan's Triangle
+# Catalan's Triangle
 
 The condition (\ref{E:condition}) can be incorporated by adding the step between step 3 and 4: 
 (step 3.5): If $n$ is even, overwrite the value (red circles below) at the center to zero

@@ -33,6 +33,11 @@ minima:
   social_links:
     github: xyise
 
+header_pages:
+  - gists.markdown
+  - cv.markdown
+  - about.markdown
+
 # Build settings
 theme: minima
 plugins:
