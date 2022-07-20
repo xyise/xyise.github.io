@@ -4,11 +4,11 @@ title:  "Bond Futures and Cheapest-to-Deliver"
 categories: math
 ---
 
-The purpose of this article is to present the concept of cheapest-to-deliver bonds for bond futures in an *idealised* setting for illustration purposes. For practical backgrounds, see the [contract specification](https://www.cmegroup.com/markets/interest-rates/us-treasury/30-year-us-treasury-bond.contractSpecs.html) in CME and their [manual](https://www.cmegroup.com/education/files/understanding-treasury-futures.pdf).
+This article is to illustrate how the cheapest-to-deliver of a bond future contract is determined under an *idealised* setting. For practical backgrounds, see the [contract specification](https://www.cmegroup.com/markets/interest-rates/us-treasury/30-year-us-treasury-bond.contractSpecs.html) in CME and their [manual](https://www.cmegroup.com/education/files/understanding-treasury-futures.pdf).
 
 # Bond Future Price and Conversion Factor
 
-Bond futures are used to bet the direction of interest rate movement. Since the underlying deliverable assets are bonds, the rate would be closely linked to those bonds. Roughly speaking, the future price should reflect the value of a *hypothetical* bond paying 6% coupons (known as *notional coupon*) with time-to-maturity *comparable to* those of the deliverable bonds In the market where the bond trades with 6% yield, the hypothetical bond is at par, i.e. its present value is roughly 1. 
+Bond futures are used to bet on the direction of interest rate movement. Since the underlying deliverable assets are bonds, the rate would be closely linked to those bonds. Roughly speaking, the future price should reflect the value of a *hypothetical* bond paying 6% coupons (known as *notional coupon*) with time-to-maturity *comparable to* those of the deliverable bonds In the market where the bond trades with 6% yield, the hypothetical bond is at par, i.e. its present value is roughly 1. 
 
 Now, the conversion factor $\mathrm{CF}_i$ for a bond $i$ is the clean price (to be precise, forward bond price) if the bond is assumed to be traded with 6% yield. The conversion factors of bonds with coupon rates less than the notional coupon would be less than 1 and vice versa.  
 
