@@ -39,7 +39,8 @@ P(n,k) = P(n-1, k-1) + P(n-1, k)
 \end{equation}
 4. update $n \leftarrow n+1$ and go back to step 3. 
 
-The triangle tracks the number of possible paths to each circle from the starting yellow circle with
+***If*** condition (\ref{E:condition}) can be ignored, 
+the triangle tracks the number of possible paths to each circle from the starting yellow circle with
 
 | left half | center line | right half |
 | :--: | :--: | :--: |
@@ -49,7 +50,7 @@ The triangle tracks the number of possible paths to each circle from the startin
 
 # Catalan's Triangle
 
-The condition (\ref{E:condition}) can be incorporated by adding the step between step 3 and 4: 
+Condition (\ref{E:condition}) can be incorporated by adding the step between step 3 and 4: 
 (step 3.5): If $n$ is even, overwrite the value (red circles below) at the center to zero
 \begin{equation}
 P(n, n/2) \leftarrow 0
