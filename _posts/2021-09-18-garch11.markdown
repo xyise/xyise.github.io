@@ -12,28 +12,88 @@ In financial time series data, it is common to observe *volatility clusturing*, 
 
 ![returns](/assets/garch11/returns.png)
 
-In this document, we demonstrate how the volatility clustering phenomena can be analysed using Garch(1,1), one of the model simplest models featuring *heteroskedasticity* (a fancy word indicating that the volatility is varying over time as indicated by the red line in the above figure.)
+This post demonstrates how the volatility clustering phenomena can be analysed using Garch(1,1), one of the model simplest models featuring *heteroskedasticity* (a fancy word indicating that the volatility is varying over time as indicated by the red line in the above figure.)
 
 ## Garch(1,1) Model
 
-The model describes the dynamics for return variable $r_t$ and volatility variable $\sigma_t$:
+Following Section 21.2 of Hamilton's Time Series Analysis (also [wiki](https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity) page as well), an $\mathrm{GARCH}(r,m)$ process for a *standard deviation* variable $h_t$ is described by
 
 $$
-\begin{eqnarray}
-r_t&=&\mu+\sigma_t\epsilon_t \label{E:garch-return}\\
-\sigma_{t+1}^2 & = & \sigma_\infty^2(1 - \beta-\gamma)+ \beta \sigma_{t}^2+ \gamma  \sigma_{t}^2 \epsilon_{t}^2 \label{E:garch-vol}\\
-\end{eqnarray}
+\begin{equation}
+h_t = \zeta + \frac{\alpha(L)}{1-\delta(L)} u_t^2
+\nonumber
+\end{equation}
+$$
+
+where 
+* $L$ is the time lag operator (i.e. $L(x_t) = x_{t-1}$)
+* $u_t := \sqrt{h_t} v_t$ with $v_t$ being an i.i.d. innovation with zero mean and unit variance
+* $\alpha(\cdot)$ and $\delta(\cdot)$ are polynomials of order $m$ and $r$, respective, given as: 
+
+$$ \alpha(x) = \alpha_1 x + \cdots + \alpha_m x^m, \quad \delta(x) = 1 - \delta_1 x - \cdots - \delta_r x^r$$
+
+
+Taking $m=r=1$, GARCH(1,1) is written as
+
+$$
+\begin{equation}
+h_t = (1-\delta_1) \zeta + \delta_1 h_{t-1} + \alpha_1 h_{t-1} v_{t-1}^2
+\label{E:garchoo-hamilton}
+\end{equation}
+$$
+
+with the following restrictions:
+* For $h_t \ge 0$, set $(1-\delta_1) \ge 0$, $\delta_1 \ge 0$ and $\alpha_1\ge 0$.
+* For covariance-stationary $u_t^2$, set $\delta_1 + \alpha_1 < 1$.
+
+Then, the unconditional mean $E[u_t^2]$ of $u_t^2$ is given by
+
+$$
+\begin{equation}
+E[u_t^2] = \frac{(1-\delta_1)\zeta}{1-\delta_1-\alpha_1}
+\end{equation}
+$$
+
+## Applying to Volatility of Stock Price
+
+Suppose that the dynamics for return variable $r_t$ of stock price $S_t$ is given by
+
+$$
+\begin{equation}
+r_t = \mu + \sigma_t \epsilon_t \label{E:garch-return}
+\end{equation}
 $$
 
 where 
 * $\epsilon_t$ is the innovation variable, assumed to be Gaussian (for simplicity) and i.i.d. over time.
-* $\mu$ is the drift parameter for $r_t$
-* $\sigma_\infty$, $\beta$ and $\gamma$ are Garch(1,1) model parameters with 
-$$ \sigma_\infty > 0,\quad \beta \ge 0, \quad \gamma \ge 0,\quad \beta + \gamma < 1. $$
+* $\mu$ is the drift parameter for $r_t$.
+* $\sigma_t$ is the volatility variable.
 
-References: See [this wiki](https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity) page for the model general model Garch(p,q) as well as other Garch families. 
+To model the dynamics of $\sigma_t$ using the GARCH(1,1) process (\ref{E:garchoo-hamilton}), make the following substitutions
 
+$$
+\begin{equation}
+h_t \rightarrow \sigma_t^2,\quad \delta_1 \rightarrow \delta, \quad \alpha_1 \rightarrow \alpha, \quad E[u_t^2] \rightarrow \sigma_{\infty}^{2}, \quad v_t \rightarrow \epsilon_t  
+\nonumber    
+\end{equation}
+$$
 
+and obtain
+$$
+\begin{equation}
+\sigma_{t}^2 = \sigma_\infty^2(1 - \delta-\alpha)+ \delta \sigma_{t-1}^2+ \alpha  \sigma_{t-1}^2 \epsilon_{t-1}^2 \label{E:garch-vol}
+\end{equation}
+$$
+
+where $\sigma_\infty$, $\delta$ and $\alpha$ are constant model parameters with restrictions
+
+$$ \sigma_\infty > 0,\quad \delta \ge 0, \quad \alpha \ge 0,\quad \delta + \alpha < 1. $$
+
+Re-writing the equation above, it is easy to see that the Garch volatility $\sigma_t$ is mean-reverting:
+\begin{equation}
+\sigma_{t+1}^2 - \sigma_{t}^2 = (1 -\delta - \alpha)(\sigma_{\infty}^2 - \sigma_{t}^2) + \alpha\sigma_{t}^2 ( \epsilon_{t}^2 - 1 )
+\end{equation}
+where $\sigma_\infty^2$ is the mean-reverting level, $(1-\delta-\alpha)$ is the mean-reverting speed, and $\alpha$ is the 'vol of vol'. 
 
 # Garch Filtering
 
@@ -51,7 +111,7 @@ To this end,
 $$ r_t = \ln { S_t / S_{t-1}}.$$
 
 * $\mu$ and $\sigma_\infty$ are set to the unconditional mean and standard deviation of $\{r_t\}$ over all available data, respectively. 
-* For now, we set $\beta = 0.9$ and $\gamma = 0.09$, which would be within typical ranges (based on google search). The estimation method is discussed later this document. 
+* For now, we set $\delta = 0.9$ and $\alpha = 0.09$, which would be within typical ranges (based on google search). The estimation method is discussed later this document. 
 
 Then, $\sigma_t$ can be derived using the following simple recursive algorithm:
 * Initialise: $$\sigma^{2}_{0} = \sigma^{2}_{\infty}$$ (or any other value as long as you can defend the choice)
@@ -73,7 +133,7 @@ While one may run many statistical tests, it is *visually obvious* that the filt
 
 To simulate a sample path using Garch(1,1), we generate samples for the innovation variable $\epsilon_t$. For illustration purposes, the standard normal random variable is used although other variables such as Student-t distributions can be used as well. 
 * The top/left figure below shows simulated returns (in light blue) using Garch(1,1) together with the corresponding Garch volatilities (in red). Volatility clustering pheonomena are clearly visible. 
-* In contrast, the bottom/left figure shows simulated returns when the geometric brownian motion (GBM) is applied (by setting $\beta=\gamma=0$) with constant volatility $\sigma_\infty$. 
+* In contrast, the bottom/left figure shows simulated returns when the geometric brownian motion (GBM) is applied (by setting $\delta=\alpha=0$) with constant volatility $\sigma_\infty$. 
 
 |returns  |levels   |
 | :-------: | :-------: |
@@ -83,7 +143,7 @@ Finally, for simulated price paths, set an initial value, say 0, and sum the ret
 
 # Estimation: MLE
 
-So far, we have postulated certain values for $\beta$ and $\gamma$ without justifications. In this section, we estimate them by applying the standard maximum likelihood estimation method. 
+So far, we have postulated certain values for $\delta$ and $\alpha$ without justifications. In this section, we estimate them by applying the standard maximum likelihood estimation method. 
 
 ## Objective Function
 
@@ -99,45 +159,45 @@ l(r_{t}|\mathcal F_{t-1}) = \displaystyle \frac{1}{\sqrt{2\pi \sigma_{t}^2}}\exp
 \end{equation}
 Thus, we can write the **objective function** to maximize as below after doing the *usual steps* (multiply over samples, take log to turn into sum, ignore constant factors)
 \begin{equation}
-L(\beta, \gamma) = -\sum_{t} \left[ \ln \sigma_{t}^2 + \frac{(r_{t} - \mu)^2}{ \sigma_{t}^2 }\right].
+L(\delta, \alpha) = -\sum_{t} \left[ \ln \sigma_{t}^2 + \frac{(r_{t} - \mu)^2}{ \sigma_{t}^2 }\right].
 \end{equation}
 
 ## Optimisation
 
-Before running the actual optimisation function, we calculate $L$ over a range of $\beta$ and $\gamma$ values with constraint $\beta + \gamma < 1$ and obtain the following contour plot which indicates where the maximum is roughly located. 
+Before running the actual optimisation function, we calculate $L$ over a range of $\delta$ and $\alpha$ values with constraint $\delta + \alpha < 1$ and obtain the following contour plot which indicates where the maximum is roughly located. 
 
 ![mle](/assets/garch11/mle-contour.png)
 
 Running an optimisation routine (e.g. Nelder-Mead), the maximum is achieved at
 
-$$ (\beta, \gamma) = (0.88035162, 0.10633708), $$
+$$ (\delta, \alpha) = (0.88035162, 0.10633708), $$
 
 which is not too far from our postulated values (0.9, 0.09).
 
 # vs EWMA
 
-When $\beta+\gamma=1$, we have
+When $\delta+\alpha=1$, we have
 
 $$
-\sigma_{t+1}^2 = \beta \sigma_{t}^2 + (1-\beta) \left( r_t - \mu \right)^2
+\sigma_{t+1}^2 = \delta \sigma_{t}^2 + (1-\delta) \left( r_t - \mu \right)^2
 $$
 
-which can be easily shown to be the EWMA volatility. For typical parametrisations (e.g. \beta = 0.9), EWMA volatilities are very close to Garch(1,1) volatilities. But, as a long-term forecasting model, EWMA is not suitable (try it out).
+which can be easily shown to be the EWMA volatility. 
 
-# Properties
+<!-- # Properties
 
 The followings are some of notable properties of the model:
 * Re-writing the second equation above, it is easy to see that the Garch volatility $\sigma_t$ is mean-reverting:
 \begin{equation}
-\sigma_{t+1}^2 - \sigma_{t}^2 = (1 -\beta - \gamma)(\sigma_{\infty}^2 - \sigma_{t}^2) + \gamma\sigma_{t}^2 ( \epsilon_{t}^2 - 1 )
+\sigma_{t+1}^2 - \sigma_{t}^2 = (1 -\delta - \alpha)(\sigma_{\infty}^2 - \sigma_{t}^2) + \alpha\sigma_{t}^2 ( \epsilon_{t}^2 - 1 )
 \end{equation}
-where $\sigma_t$ is the mean-reverting level and $(1-\beta-\gamma)$ is the mean-reverting speed. 
+where $\sigma_t$ is the mean-reverting level and $(1-\delta-\alpha)$ is the mean-reverting speed. 
 * Given the information up to today $t$, the *expected forward* variance at $\tau > t$ is fully determined and calculated as 
 
 $$
 \begin{eqnarray*}
 \bar{\sigma}^2_{t}(\tau) & := & E[\sigma_{t+\tau}^2| \mathcal F_{t} ]\\\\
- & = & \sigma_{\infty}^2 + \frac{1-(\beta+\gamma)^\tau}{1-(\beta+\gamma)} \frac{\sigma_{t+1}^2 - \sigma_{\infty}^2}{\tau}
+ & = & \sigma_{\infty}^2 + \frac{1-(\delta+\alpha)^\tau}{1-(\delta+\alpha)} \frac{\sigma_{t+1}^2 - \sigma_{\infty}^2}{\tau}
 \end{eqnarray*}
 $$
 
@@ -146,6 +206,6 @@ $$
 $$
 \begin{eqnarray*}
 \bar{\nu}^2_t(\tau) & := &\frac{1}{\tau} \sum_{n=1}^{\tau} \bar \sigma_t^2(n)\\\\
-& = &\sigma_{\infty}^2 + \frac{1-(\beta+\gamma)^\tau}{1-(\beta+\gamma)} \frac{\sigma_{t+1}^2 - \sigma_{\infty}^2}{\tau}
+& = &\sigma_{\infty}^2 + \frac{1-(\delta+\alpha)^\tau}{1-(\delta+\alpha)} \frac{\sigma_{t+1}^2 - \sigma_{\infty}^2}{\tau}
 \end{eqnarray*}
-$$
+$$ -->
