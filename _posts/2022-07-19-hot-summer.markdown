@@ -55,7 +55,7 @@ Two methods are considered
 
     $$
     \begin{equation}
-        [f(\phi)+s(L-M), f(\phi)+s(U-M)]
+        [f(\phi)+M+s(L-M), f(\phi)+M+s(U-M)]
         \label{E:global-band}
     \end{equation}
     $$
