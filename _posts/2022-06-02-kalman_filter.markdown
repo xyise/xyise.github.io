@@ -4,7 +4,9 @@ title:  "Kalman Filter"
 categories: maths
 ---
 
-This post is about how the Kalman Filter works based on Chapter 13 of Time Series Analysis by Hamilton.The [Wikipedia page](https://en.wikipedia.org/wiki/Kalman_filter) is also pretty good. 
+This post is about how the Kalman Filter works based on Chapter 13 of Time Series Analysis by Hamilton.
+* The [Wikipedia page](https://en.wikipedia.org/wiki/Kalman_filter) is also pretty good. 
+* Youtube on [Bayesian/Kalman](https://www.youtube.com/watch?v=u_xRUxwlaFY&ab_channel=LarsHammarstrand)
 
 Note on *Kalman Gain* $K_t$: 
 * In Hamilton, it is defined as $K_t := FP_{t\vert t-1}H(H'P_{t\vert t-1}H+R)^{-1}$.
