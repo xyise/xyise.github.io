@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "On Volatility Surfaces - FX and Crypto"
+title:  "On Volatility Surfaces - Currencies"
 categories: fx, crypto
 ---
 
