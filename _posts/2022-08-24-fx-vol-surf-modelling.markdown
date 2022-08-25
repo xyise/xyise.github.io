@@ -222,6 +222,9 @@ For the first choice known as *Sticky Strike* approach, it is easy since we spec
 
 $$ \sigma_{K} \to \sigma_{K} + \delta \sigma_{K} $$
 
+Here, perturbations on other risk factors $S$, $r_d$ and $r_f$ are not relevant here. 
+
+
 For the second choice known as *Sticky Delta*, the situation is more complex. 
 
 **TO BE CONTINUED**
