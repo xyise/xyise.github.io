@@ -6,6 +6,10 @@ categories: fx, crypto
 
 <div style="display:none">
 $
+\newcommand\strike{\mathrm{strk}}
+\newcommand\mdelta{\mathrm{dlt}}
+\newcommand\forward{\mathrm{fwd}}
+\newcommand\spot{\mathrm{spt}}
 \newcommand\atm{\mathrm{ATM}}
 \newcommand\xC[1]{#1\mathrm{C}}
 \newcommand\xP[1]{#1\mathrm{P}}
@@ -30,9 +34,9 @@ $
 
 <hr/>
 
-**warnings**:
-* this is incomplete (very far).
-* probably nothing new to those who worked on fx options in trading/quant space. 
+**To-dos**:
+* Examples why delta-based smiles make more sense. 
+* How to interpolate across strikes / deltas and across expiries. Adopt the approach in [Castagna and Mercurio](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=873788)?
 
 <hr/>
 
@@ -45,7 +49,7 @@ Here, I describe some basic concepts on FX (and crypto) volatility surfaces with
 Standard options such as European calls and puts trade by strikes and one can use the Black-Scholes (BS) pricing formula to convert a market value $V$ into a BS implied volatility $\sigma$:
 
 \begin{equation}
-V = V^{S}(S, \sigma, r_d, r_f; \kappa, \tau,  \phi) = 
+V = V^{\spot}(S, \sigma, r_d, r_f; \kappa, \tau,  \phi) = 
 \phi e^{-r_d\tau} \left[f(\tau) N(\phi d_{+}) - \kappa N(\phi d_{-}) \right]
 \label{E:BS}
 \end{equation}
@@ -79,13 +83,13 @@ Deriving the volatilities across all strikes and expiries, and noting that the v
 <div class="boxed">
 $$
 \begin{equation}
-\sigma^\kappa(\kappa, \tau; S, r_f, r_f)
+\sigma = \sigma^\strike(\kappa, \tau; S, r_f, r_f)
 \label{E:BS-vol}
 \end{equation}
 $$
 </div>
 
-Here, the super-script $\kappa$ is to indicate the surface is expressed in terms of strikes. 
+Here, the super-script `$\strike$' is to indicate the surface is expressed in terms of strikes. 
 
 
 # Forward Rate and Forward Value
@@ -106,7 +110,7 @@ Observations:
   the BS formula (\ref{E:BS}) can be written as 
   
   \begin{equation}
-  V = V^F(F, \sigma, r_d, r_f; \kappa, \tau, \phi).
+  V = V^\forward(F, \sigma, r_d, r_f; \kappa, \tau, \phi).
   \label{E:BS-F}  
   \end{equation}
   
@@ -114,12 +118,14 @@ Observations:
 
 # Delta and Moneyness
 
+## Delta, ATM, Smiles
+
 For FX options, the delta sensitivity is (typically) measured with respect to the underlying *forward value* $F$:
 
 \begin{equation}
 \Delta(\kappa, \tau, \phi) = 
-\frac{\partial V^F}{\partial F} = 
-\frac{\partial V^S}{\partial S}
+\frac{\partial V^\forward}{\partial F} = 
+\frac{\partial V^\spot}{\partial S}
 \frac{\partial S}{\partial F} = \phi N(\phi d_+).
 \end{equation}
 
@@ -144,9 +150,7 @@ $$
 \right.
 \end{equation}
 $$
-where $0 < x < 100$. 
-
-By definition, 
+where $0 < x < 100$. By definition, 
 
 $$
 K^{\xC{x}} = K^{\xP{(100-x)}}
@@ -155,16 +159,18 @@ $$
 
 Typically, practitioners consider $x = 25$ or $10$, or both. 
 
-From the option market, *interpolate* the BS volatilities at $K^{\xP{x}}(\tau)$, $K^{\atm}(\tau)$, $K^{\xC{x}}(\tau)$ and obtain volatilities in terms of deltas-based moneyness:
+From the option market, *search* for the BS volatilities at $K^{\xP{x}}(\tau)$, $K^{\atm}(\tau)$, $K^{\xC{x}}(\tau)$ and obtain volatilities in terms of deltas-based moneyness:
 
 $$
 \begin{equation}
-\sigma^{\xP{x}}(\tau), \quad  \sigma^{\atm}(\tau), \quad \sigma^{\xC{x}}(\tau)
+\sigma^{\xP{x}}(\tau), \quad  \sigma^{\atm}(\tau), \quad \sigma^{\xC{x}}(\tau).
 \label{E:sigma-delta}  
 \end{equation}
 $$
 
-Then, the risk-reversal (RR) and butterfly (FLY) volatilities are defined as
+Here, the search is effectively solving equation (\ref{E:strike-to-putdelta}) below.
+
+The risk-reversal (RR) and butterfly (FLY) volatilities are defined as
 
 $$
 \begin{eqnarray*}
@@ -174,10 +180,54 @@ $$
 \end{eqnarray*}
 $$
 
-For notational simplicity, let's combine the three expressions in (\ref{E:sigma-delta}) into a single function in negative put delta $y \in (0, 1)$:
+## Delta-based Volatility Surface
+
+To make mathematical treatments easier, let's combine the three expressions in (\ref{E:sigma-delta}) into a single function in terms of $y$, the negative of the put delta. 
+
+$$ 
+\begin{equation}
+{\color{blue} y} = - \Delta(S, \sigma^\strike( {\color{red} \kappa}), r_d, r_f; {\color{red} \kappa}, \tau, -1), 
+\label{E:strike-to-putdelta}
+\end{equation}
+$$
+
+For each $\color{blue} y$, solve for $\color{red} \kappa$ to define a mapping $\zeta: {\color{blue} y} \mapsto {\color{red} \kappa}$
 
 $$
-\sigma(y, \tau) := \left\{
+{\color{red} \kappa} = \zeta({\color{blue} y}; S, r_d, r_f, \tau)
+$$
+
+Plugging this into $\sigma^\strike(\kappa, \tau)$, we have a volatility surface in terms of $y$ and $\tau$
+
+<div class="boxed">
+$$
+\begin{equation}
+\sigma = \sigma^\mdelta(y, \tau; S, r_d, r_f)
+\quad \text{where} \quad 0 < y < 1.
+\label{E:BS-vol-delta}
+\end{equation}
+$$
+</div>
+
+The superscript $\mdelta$ is to indicate that the surface is expressed in terms of $y$, contrasting to the expression (\ref{E:BS-vol}). 
+
+With respect to this volatility surface $\sigma^\mdelta(y)$, $\kappa$ and $y$ satisfy
+
+$$ 
+\begin{equation}
+{\color{blue} y} = - \Delta(S, \sigma^\mdelta( {\color{blue} y}), r_d, r_f; {\color{red} \kappa}, \tau, -1), 
+\label{E:putdelta-to-strike}
+\end{equation}
+$$
+
+which is the same as (\ref{E:strike-to-putdelta}) except $\sigma^\strike( {\color{red} \kappa})$ is replaced by $\sigma^\mdelta( {\color{blue} y})$
+
+
+
+Expressing $\sigma^\mdelta$ in terms of $\xP{x}$, $\atm$ and $\xC{x}$, we have
+
+$$
+\sigma^\mdelta(y, \tau) = \left\{
 \begin{array}{cc}
 \sigma^{\xP{100y}}(\tau), & \text{if } 0 < y < 0.5 \\ \\
 \sigma^{\atm}(\tau), & \text{if } y = 0.5 \\ \\
@@ -188,46 +238,72 @@ $$
 
 or, equivalently and simply,
 
-$$ \sigma(y, \tau) := \sigma^{\xP{100y}}(\tau) \quad\text{where}\quad 0 < y < 1$$
+$$ \sigma^\mdelta(y, \tau) := \sigma^{\xP{100y}}(\tau) \quad\text{where}\quad 0 < y < 1$$
 
-Adding all other parameters, we have a volatility surface in terms of $y$ and $\tau$
 
-<div class="boxed">
-$$
-\begin{equation}
-\sigma^y(y, \tau; S, r_d, r_f)
-\label{E:BS-vol-delta}
-\end{equation}
-$$
-</div>
-
-The superscript $y$ is to indicate that the surface is expressed in terms of $y$, contrasting to the expression (\ref{E:BS-vol}), 
 
 
 # Risk Factor Representation and Modelling
 
 From the quantitative perspective, the core building block of any measurement models for risk management purposes is to specify how to perturb risk factors. Of course, the first step and the most important step is to define the risk factor representations. The rest of step is to specify perturbations in terms of the risk factors, and re-value the portfolio to the perturbed risk factors.  By the way, since the representation affect all the remaining steps, the act of choosing a specific risk factor representation is part of *modelling choices*. 
 
-When it comes to currency options, we have at least two modelling choices based on the discussed above:
+When it comes to currency options, we have at least two choices of risk factor representations based on the discussed above:
 
 | choice | known as | spot | interest rates | volatility surface |
 | :--: | :--: | :--: | :--: | :--: |
-|1| Sticky Strike | $S$ | $r_d$, $r_f$ | $\sigma^\kappa$ by strike per (\ref{E:BS-vol}) |
-|2| Sticky Delta | $S$ | $r_d$, $r_f$ | $\sigma^y$ by delta per (\ref{E:BS-vol-delta})|
+|1| Sticky Strike | $S$ | $r_d$, $r_f$ | $\sigma^\strike(\kappa, \tau)$ |
+|2| Sticky Delta | $S$ | $r_d$, $r_f$ | $\sigma^\mdelta(y, \tau)$ |
+
+Let's first agree on notations. For variable $x$,
+
+| notation | description | comments |
+| :--:     | :--: | :--: |
+| $x_0$ | unperturbed value, referred to as *base* value | typically, current market data |
+| $\delta x$ | perturbation | specified by risk models (stress shocks, simulated risk factor moves, etc) |
+| $\tilde x$ | perturbed value, i.e. $\tilde x = x_0 + \delta_0$ | this is by definition |
+
+Suppose that we have a single option position with strike $K$, and we would like to calculate how perturbations in risk factors affect its valuation. In order to value the position using the BS formula (\ref{E:BS}) before and after the perturbations, we need
+* $S_0$, $r_{d,0}$, $r_{f,0}$, $\sigma_{0}(K)$ for base valuation
+* $\tilde S$, $\tilde r_d$, $\tilde r_f$, $\tilde \sigma(K)$ for perturbed valuation
+
+For spot ($S$) and interest rates ($r_d$, $r_f$), it is trivial because they are risk factors in both representations. So, the risk model under consideration specifies $\delta S$, $\delta r_d$ and $\delta r_f$. 
+
+How about $\sigma(K)$ and $\tilde \sigma(K)$, the base and perturbed volatility for strike $K$? 
+
+## Sticky Strike Approach
 
 
-To illustrate how each choice affects how risk factors are perturbed, let's focus how the volatility $\sigma_{K}$ at strike $K$ for a given expiry $\tau$ (which is omitted for notational simplicity).
+For the first choice known as the *Sticky Strike* approach, it is also trivial: 
+* $\sigma_0(K)$ is obtained by reading off $\sigma_0^\strike(\kappa)$ volatility surface at $\kappa = K$. 
+* The risk model specifies perturbation amount $\delta \sigma^\strike(\kappa)$ for each $\kappa$. So, the perturbed volatility at $K$ is trivially
 
-For the first choice known as *Sticky Strike* approach, it is easy since we specify perturbation amounts $\delta \sigma_{K}$ *directly* in terms of strike $\kappa$. So, the volatility at $K$ is perturbed simply as
+  $$ \tilde\sigma(K) = \sigma_0(K) + \delta \sigma^\strike(K) $$
 
-$$ \sigma_{K} \to \sigma_{K} + \delta \sigma_{K} $$
+Note that perturbations on other risk factors $S$, $r_d$ and $r_f$ have no impact on $\tilde\sigma_K$. 
 
-Here, perturbations on other risk factors $S$, $r_d$ and $r_f$ are not relevant here. 
+## Sticky Delta Approach
 
 
-For the second choice known as *Sticky Delta*, the situation is more complex. 
+For the second choice known as the *Sticky Delta* approach, the situation is more complex. The risk model specifies perturbation amount $\delta \sigma^\mdelta(y)$ for each $y$, and we have the perturbed volatilities in terms of $y$:
 
-**TO BE CONTINUED**
+$$ \tilde{\sigma}^\mdelta(y) = \sigma_0^{\mdelta}(y) + \delta \sigma(y)$$
+
+For the base volatility $\sigma_0(K)$, we solve equation (\ref{E:putdelta-to-strike}) for ${\color{blue} y_0}$ with $\kappa = K$:
+
+$$
+{\color{blue} y_0} = - \Delta(S_0, \sigma^\mdelta_0( {\color{blue} y_0}), r_{d,0}, r_{f,0}; K, \tau, -1).
+$$
+
+Then, $\sigma_0(K) = \sigma^\mdelta({\color{blue} y_0})$. 
+
+For the perturbed volatility $\tilde\sigma(K)$, solve the same equation for perturbed delta {\color{blue} \tilde y}, but with other risk factors perturbed as well: 
+
+$$
+{\color{blue} \tilde y} = - \Delta(\tilde S, \sigma^\mdelta( {\color{blue} \tilde y}), \tilde r_d, \tilde r_f; K, \tau, -1).
+$$
+
+Then, $\tilde \sigma(K) = \tilde \sigma^\mdelta({\color{blue} \tilde y})$. 
+
 
 
 
