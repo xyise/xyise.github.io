@@ -29,6 +29,7 @@ $
     padding: 10px;
     border-radius: 10px;
     }
+
 </style>
 
 
@@ -238,14 +239,25 @@ $$
 
 or, equivalently and simply,
 
-$$ \sigma^\mdelta(y, \tau) := \sigma^{\xP{100y}}(\tau) \quad\text{where}\quad 0 < y < 1$$
+$$ \sigma^\mdelta(y, \tau) = \sigma^{\xP{100y}}(\tau) \quad\text{where}\quad 0 < y < 1$$
 
 
 
 
-# Risk Factor Representation and Modelling
+# Risk Factor Perturbations
 
-From the quantitative perspective, the core building block of any measurement models for risk management purposes is to specify how to perturb risk factors. Of course, the first step and the most important step is to define the risk factor representations. The rest of step is to specify perturbations in terms of the risk factors, and re-value the portfolio to the perturbed risk factors.  By the way, since the representation affect all the remaining steps, the act of choosing a specific risk factor representation is part of *modelling choices*. 
+From the quantitative perspective, a core building block of any risk models is to specify how to perturb risk factors. Of course, the first step and the most important step is to define the risk factor representations. The rest of step is to specify perturbations in terms of the risk factors, and re-value the portfolio to the perturbed risk factors.  By the way, since the representation affect all the remaining steps, the act of choosing a specific risk factor representation is part of *modelling choices*. 
+
+<div class="boxed">
+Examples of Risk Models: 
+<ul>
+<li> sensitivities: perturb each risk factor by a tiny amount. </li>
+<li> stress testing: perturb risk factors by significant amounts that reflect stresses. </li>
+<li> market risk VaR: perturb risk factors by amounts equivalent to changes over a specific horizon (e.g. 1-day or 10-days)</li>
+<li> counterparty credit risk: simulate a series of perturbations and accumulate to generate scenarios at future time steps. </li>
+</ul>
+</div>
+&nbsp;
 
 When it comes to currency options, we have at least two choices of risk factor representations based on the discussed above:
 
@@ -268,14 +280,14 @@ Suppose that we have a single option position with strike $K$, and we would like
 
 For spot ($S$) and interest rates ($r_d$, $r_f$), it is trivial because they are risk factors in both representations. So, the risk model under consideration specifies $\delta S$, $\delta r_d$ and $\delta r_f$. 
 
-How about $\sigma(K)$ and $\tilde \sigma(K)$, the base and perturbed volatility for strike $K$? 
+How about $\sigma_0(K)$ and $\tilde \sigma(K)$, the base and perturbed volatility for strike $K$? 
 
 ## Sticky Strike Approach
 
 
 For the first choice known as the *Sticky Strike* approach, it is also trivial: 
 * $\sigma_0(K)$ is obtained by reading off $\sigma_0^\strike(\kappa)$ volatility surface at $\kappa = K$. 
-* The risk model specifies perturbation amount $\delta \sigma^\strike(\kappa)$ for each $\kappa$. So, the perturbed volatility at $K$ is trivially
+* The risk model specifies a perturbation amount $\delta \sigma^\strike(\kappa)$ for each $\kappa$. So, the perturbed volatility at $K$ is trivially
 
   $$ \tilde\sigma(K) = \sigma_0(K) + \delta \sigma^\strike(K) $$
 
@@ -284,7 +296,7 @@ Note that perturbations on other risk factors $S$, $r_d$ and $r_f$ have no impac
 ## Sticky Delta Approach
 
 
-For the second choice known as the *Sticky Delta* approach, the situation is more complex. The risk model specifies perturbation amount $\delta \sigma^\mdelta(y)$ for each $y$, and we have the perturbed volatilities in terms of $y$:
+For the second choice known as the *Sticky Delta* approach, the situation is more complex. The risk model specifies a perturbation amount $\delta \sigma^\mdelta(y)$ for each $y$, and we have the perturbed volatilities in terms of $y$:
 
 $$ \tilde{\sigma}^\mdelta(y) = \sigma_0^{\mdelta}(y) + \delta \sigma(y)$$
 
@@ -299,18 +311,8 @@ Then, $\sigma_0(K) = \sigma^\mdelta({\color{blue} y_0})$.
 For the perturbed volatility $\tilde\sigma(K)$, solve the same equation for perturbed delta {\color{blue} \tilde y}, but with other risk factors perturbed as well: 
 
 $$
-{\color{blue} \tilde y} = - \Delta(\tilde S, \sigma^\mdelta( {\color{blue} \tilde y}), \tilde r_d, \tilde r_f; K, \tau, -1).
+{\color{blue} \tilde y} = - \Delta(\tilde S, \tilde\sigma^\mdelta( {\color{blue} \tilde y}), \tilde r_d, \tilde r_f; K, \tau, -1).
 $$
 
 Then, $\tilde \sigma(K) = \tilde \sigma^\mdelta({\color{blue} \tilde y})$. 
 
-
-
-
-{% comment %}
- For example, 
-* sensitivities: perturb each risk factor by a tiny amount. 
-* stress testing: perturb risk factors by significant amounts that reflect stresses. 
-* market risk VaR: perturb risk factors by amounts equivalent to changes over a specific horizon (e.g. 1-day or 10-days)
-* counterparty credit risk: simulate a series of perturbations and accumulate to generate scenarios at future time steps. 
-{% endcomment %}
