@@ -38,6 +38,7 @@ $
 **To-dos**:
 * Examples why delta-based smiles make more sense. 
 * How to interpolate across strikes / deltas and across expiries. Adopt the approach in [Castagna and Mercurio](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=873788)?
+* SABR as a parametrisation (i.e. interpolator)
 
 <hr/>
 
@@ -316,3 +317,36 @@ $$
 
 Then, $\tilde \sigma(K) = \tilde \sigma^\mdelta({\color{blue} \tilde y})$. 
 
+$\color{red} \text{[To add more here]}$
+
+
+# SABR
+
+According Eq. A.69c of [Hagan](http://web.math.ku.dk/~rolf/SABR.pdf), the implied Black volatility for the SABR model is 
+
+$$
+\begin{eqnarray}
+\sigma(K) & = & {\color{red} \frac{\alpha}{(fK)^{(1-\beta)/2}}} \cdot
+\frac{1}{\displaystyle 1 + \frac{(1-\beta)^2}{24}\left[{\color{blue} \log\left(\frac{f}{K}\right)}\right]^2 + \frac{(1-\beta)^4}{1920}\left[{\color{blue} \log\left(\frac{f}{K}\right)}\right]^4 }
+\cdot 
+\left(\frac{\color{teal}\zeta}{\hat\chi({\color{teal} \zeta})}\right) \nonumber \\
+\nonumber\\
+& & \cdot \left\{ 1 + \left[
+  \frac{(1-\beta)^2}{24}\left({\color{red} \frac{\alpha}{(fK)^{(1-\beta)/2}}}\right)^2
+   + \frac{\rho\nu\beta}{4}{\color{red} \frac{\alpha}{(fK)^{(1-\beta)/2}}} + \frac{2-3\rho^2}{24}\nu^2 \right] \tau \right\}
+\end{eqnarray}
+$$
+
+where 
+
+$$
+{\color{teal} \zeta} = \frac{\displaystyle \nu {\color{blue}\log\left(\frac{f}{K}\right)}}{\displaystyle\left({\color{red} \frac{\alpha}{(fK)^{(1-\beta)/2}}}\right)}, 
+\quad
+\hat\chi({\color{teal} \zeta}) = \log\left(\frac{\sqrt{1-2\rho{\color{teal} \zeta}+{\color{teal} \zeta}^2} - \rho + {\color{teal} \zeta}}{1-\rho} \right)
+$$
+
+* $\alpha$ is calibrated to the at-the-money. but, which atm? 
+* we can calculate $d\sigma/dK$ and $d^2\sigma/dK^2$ analytically. A bunch of chain rules. 
+* then, implied CDF is $d V_{\text{put}} / dK$. pdf is $d^2 V_{\text{put}} / dK^2$. for example
+  
+  $$ \textrm{cdf}(K) = \frac{\partial V_{\text{put}}}{\partial K} + \frac{\partial V_{\text{put}}}{\partial \sigma}\frac{d \sigma}{d K} $$
