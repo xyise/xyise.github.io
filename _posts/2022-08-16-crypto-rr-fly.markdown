@@ -6,8 +6,6 @@ categories: fx, crypto
 
 <iframe width="600" height="400" src="https://www.youtube.com/embed/zFnE0xXkuYQ" frameborder="0" allowfullscreen></iframe>
 
-{% include youtubePlayer.html }
-
 [Deribit](https://www.deribit.com/) provides public APIs to request market data of options on crypto currencies including BTC and ETH. Since cryptos are currencies,
 let's look for risk reversals and butterflies. Nothing new other than applying standards from the FX market and doing my own revisions on the subject ([jupyter notebook](https://github.com/xyise/xyise/tree/main/notebook/deribit) - needs clean-up).
 
