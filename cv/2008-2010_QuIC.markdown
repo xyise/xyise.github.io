@@ -1,0 +1,31 @@
+---
+layout: page
+permalink: /cv/quic2008
+categories: cv
+title: "QuIC (S&P Global), May 2008 - Nov 2010"
+---
+
+## Role
+
+- Formal title: Financial Engineer
+- Informally, I was a multi-player
+
+## Overview
+
+- The firm was looking for a few financial engineers to relocate from Vancouver to London to serve as on-site subject-matter-experts for their clients. I volunteered to take the opportunity, keen to experience firsthand the financial industry in one of its global hubs.
+- The experience was highly enriching as I had the chance to work with various clients including Credit Suisse, DBS, EBRD, HSBC, Lloyd's of London, and MUFJ. Each client brought unique challenges and perspectives, allowing me to understand the industry from various angles and expand my knowledge.
+- I have understaken various roles: offering on-site client support, participating in presales activities, conducting business analysis, writing various types of documents, facilitating technical discussions among global teams, among others.
+- However, despite the diverse experiences and perspectives gained, I realised that my core competencies in quantitative modelling and software development were not being fully leveraged. This recognition eventually led me to leave QuIC and join NatWest in 2010, where I took up the role of a quantitative analyst.
+
+## Activity Summary
+
+As an on-site client-facing financial engineer:
+
+- Provided client support through cooperation with project managers, financial engineers and developers in London, Vancouver and Calgary.
+- Gathered business requirements and wrote function/technical specifications and user guides reflecting client-specific configurations.
+- Participated in pre-sale activities, offered demos, and trained clients.
+
+Notable client support activities:
+
+- For EBRD, I worked as the lead financial engineer in a multi-year program of building a strategic risk system encompassing market, counterparty credit, and economic risk. Through this work, I was exposed to all aspects of traded risk modelling and management.
+- For HSBC, I implemented the core IRC calculation module using the QuIC script and helped their IT team integrate it into their system.

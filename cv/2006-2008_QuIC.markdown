@@ -1,0 +1,23 @@
+---
+layout: page
+permalink: /cv/quic2006
+categories: cv
+title: "QuIC Financial Technologies (S&P Global), Vancouver, May 2006 - May 2008"
+---
+
+## Role
+
+Financial Engineer
+
+## Overview
+
+- This was my first experience within the financial industry.
+- QuIC, the firm I joined, was still in its growth phase, teeming with a vibrant startup-like ambiance despite already servicing several clients at the time of my joining. The open culture of the firm provided me an opportunity to explore all areas of our risk analytics. Over the first six months, I learned a great deal, ranging from pricing vanilla and exotic derivatives to simulating risk factors for risk measurements, and to understanding various kinds of risk metrics and their aggregations.
+- Thereafter, I had a great opportunity to lead the development of the pricing module for analytic products within their risk system. Together with two other team members, I successfully delivered this module. This was a highly rewarding experience, particularly considering I had negligible professional programming experience before joining QuIC.
+
+## Activities Undertaken
+
+- Learned pricing models for diverse derivative products including
+  - analytic models: forwards, futures, interest swaps, caps/floors, swaptions, vanilla options, barriers
+  - finite differences for IR & FX exotic products: Bermudan options/swaptions, PRDC, targets, snowballs, etc
+- Was tasked with leading the development of a new framework of analytical pricing modules for IR and FX products. Coded using their proprietary programming language akin to Matlab and Python numpy. These modules were integrated into the firm's risk engine for market and CCR and subsequently sold to several clients.
