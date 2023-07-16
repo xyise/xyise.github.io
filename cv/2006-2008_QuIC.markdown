@@ -2,7 +2,7 @@
 layout: page
 permalink: /cv/quic2006
 categories: cv
-title: "QuIC Financial Technologies (S&P Global), Vancouver, May 2006 - May 2008"
+title: "QuIC (now part of S&P Global), Vancouver, May 2006 - May 2008"
 ---
 
 ## Role

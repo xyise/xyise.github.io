@@ -2,7 +2,7 @@
 layout: page
 permalink: /cv/quic2008
 categories: cv
-title: "QuIC (S&P Global), May 2008 - Nov 2010"
+title: "QuIC (now part of S&P Global), May 2008 - Nov 2010"
 ---
 
 ## Role
