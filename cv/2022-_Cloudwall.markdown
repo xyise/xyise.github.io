@@ -21,7 +21,7 @@ Executive Director, Quantitative Research
 
 - **Interactive risk measurement services**: Jan 2023 - Present
 
-  I've been responsible for delivering the modeling and analytical implementation components of the company's interactive risk measurement service.
+  I've been responsible for delivering the modelling and analytical implementation components of the company's interactive risk measurement service.
 
   As of July 2023, the analytics supports: portfolio of digital assets and derivatives including options, perpetuals, and futures; historical simulations of spot price and volatility surfaces; full revaluation of portfolios, capturing non-linear risk; various risk measure computations (VaR, Conditional VaR, etc); sensitivity (Greek) calculations
 
@@ -29,7 +29,7 @@ Executive Director, Quantitative Research
 
 - **Real-time option pricing service**: Nov 2022 - Feb 2023
 
-  I contributed to the development of a real-time digital asset option pricing service, covering all modeling aspects. This includes market data collection, volatility surface construction, option pricing, sensitivity calculations, implementation testing, model evaluation, documentation, and publication (see [Publications](#publications))
+  I contributed to the development of a real-time digital asset option pricing service, covering all modelling aspects. This includes market data collection, volatility surface construction, option pricing, sensitivity calculations, implementation testing, model evaluation, documentation, and publication (see [Publications](#publications))
 
 - **Value-at-risk model evaluations**: Sep 2022 - Jan 2023
 
@@ -53,7 +53,7 @@ I (co-)authored the following publications at Cloudwall, available publicly at t
 
 During my tenure at Cloudwall, I have been able to work with and learn from a diverse set of tools and technologies.
 
-- Frequently used:
+- Daily used:
   - Python: numpy, pandas, scipy, pytest, test-driven design, objected-oriented design, interface specification, notebooks, pytest, pylint, mypy
   - SQL, git, Linux, Dockers, Jira, LaTeX, REST API
 - Gained exposure to: continuous integration, containers (Docker), cloud (Azure), Redis, Dagster (data pipeline)
