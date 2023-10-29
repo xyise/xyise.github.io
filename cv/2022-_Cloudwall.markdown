@@ -2,7 +2,7 @@
 layout: page
 permalink: /cv/cw2022
 categories: cv
-title: "Cloudwall, London, Sep 2022 - Present"
+title: "Cloudwall, London, Sep 2022 - Sep 2023"
 ---
 
 ## Title
@@ -25,7 +25,8 @@ Executive Director, Quantitative Research
 
   As of July 2023, the analytics supports: portfolio of digital assets and derivatives including options, perpetuals, and futures; historical simulations of spot price and volatility surfaces; full revaluation of portfolios, capturing non-linear risk; various risk measure computations (VaR, Conditional VaR, etc); sensitivity (Greek) calculations
 
-  Our team continuouly expands the service's capabilities, with stress testing being the upcoming feature.
+  See also [Publications](#publications)
+
 
 - **Real-time option pricing service**: Nov 2022 - Feb 2023
 
@@ -48,6 +49,8 @@ I (co-)authored the following publications at Cloudwall, available publicly at t
 <div id="pulications"></div>
 
 - [_Digital Asset Volatility Surfaces in Serenity_](https://cdn.sanity.io/files/9b037qa5/production/25b6d7e0ab1d7cae3e8578cb5f9371d3b8467ac1.pdf)
+
+- [_Risk Measurement of Digital Asset Options_](https://cdn.sanity.io/files/9b037qa5/production/1e39edcd0f64cf430acc5ff3d10eccd80d927339.pdf)
 
 ## Tools and Technologies
 

@@ -17,9 +17,9 @@ Head of Traded Risk Model Developer, Financial Risk & Analytics Lead, D12 (Direc
 - Python, C# and Matlab were our tools for implementing and testing our models.
 - I coordinated risk quant activities on bank-wide projects, such as FRTB, SIMM, and RFR transition.
 - I represented the firm in model inspection meetings with regulatory bodies (PRA, US Federal Reserve) and in industry-wide working groups.
-- Apart from fulfilling my administrative obligations, I also made sure to be fully involved in modelling and coding, dedicating at least 50% of my time to these technical tasks. See [here](#noteworthy-hands-on-works).
+- Apart from fulfilling my administrative obligations, I also made sure to be fully involved in modelling and coding, dedicating at least 50% of my time to these technical tasks. See [here](#noteworthy-works).
 
-## Noteworthy Hands-on Works
+## Noteworthy Works
 
 Outlined below are some significant examples of my technical work, listed in chronological order.
 
